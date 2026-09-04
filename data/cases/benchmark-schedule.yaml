@@ -1,0 +1,85 @@
+schedule_version: 1
+schedule_id: arbiter-benchmark-schedule-v1
+kind: benchmark
+currency: USD
+notice: Synthetic benchmark allowances for deterministic comparison only; not carrier fees, contracted rates, or reimbursement
+  claims.
+entries:
+- code: D0120
+  amount_cents:
+    state: assumed
+    value: 6000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D0150
+  amount_cents:
+    state: assumed
+    value: 10000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D0180
+  amount_cents:
+    state: assumed
+    value: 12000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D0210
+  amount_cents:
+    state: assumed
+    value: 18000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D0330
+  amount_cents:
+    state: assumed
+    value: 15000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D1110
+  amount_cents:
+    state: assumed
+    value: 10000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D2391
+  amount_cents:
+    state: assumed
+    value: 20000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D2510
+  amount_cents:
+    state: assumed
+    value: 80000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D2520
+  amount_cents:
+    state: assumed
+    value: 100000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D2530
+  amount_cents:
+    state: assumed
+    value: 120000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D2740
+  amount_cents:
+    state: assumed
+    value: 100000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D2952
+  amount_cents:
+    state: assumed
+    value: 120000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.
+- code: D2954
+  amount_cents:
+    state: assumed
+    value: 60000
+    assumption_id: arbiter-benchmark-schedule-v1
+    rationale: Frozen synthetic benchmark amount used identically for both plans.

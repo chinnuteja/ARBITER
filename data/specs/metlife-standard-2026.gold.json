@@ -1,0 +1,1813 @@
+{
+  "gold_spec_artifact_version": 2,
+  "reference_status": "draft_human_audited",
+  "authored_at": "2026-08-16",
+  "case_boundary": {
+    "option": "Standard",
+    "coverage_tier": "self_only",
+    "service_classes": [
+      "A",
+      "B",
+      "C"
+    ],
+    "frequency_codes": [
+      "D0120",
+      "D0150",
+      "D0180",
+      "D0210",
+      "D0330"
+    ],
+    "alternate_benefit_codes": [
+      "D2510",
+      "D2520",
+      "D2530",
+      "D2952"
+    ],
+    "notice": "This is a case-bounded reference spec for the preregistered MVP, not a complete representation of the plan or a production payment policy."
+  },
+  "spec": {
+    "spec_id": "metlife-standard-2026-gold-v2",
+    "carrier": "MetLife",
+    "plan_name": "The MetLife Federal Dental Plan",
+    "option": "Standard Option",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "document_set": {
+      "documents": [
+        {
+          "document_id": "fedvip-2026-metlife-standard-02AP-11",
+          "kind": "plan_brochure",
+          "source_url": "https://www.opm.gov/healthcare-insurance/healthcare/plan-information/plans/pdf/2026/brochures/02AP-11.pdf",
+          "sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "canonicalization_version": "pymupdf-sorted-text-nfc-v1"
+        }
+      ]
+    },
+    "rules": [
+      {
+        "kind": "eligibility",
+        "rule_id": "metlife-eligibility-plan-year-2026",
+        "scope": {},
+        "plan_effective_from": {
+          "state": "derived",
+          "value": "2026-01-01",
+          "evidence": [
+            {
+              "clause_id": "metlife-coverage-effective-2026",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 7,
+              "char_start": 1222,
+              "char_end": 1629,
+              "quoted_text": "Coverage Effective Date       If you sign up for a dental and/or vision plan during the 2025 Open Season, your coverage\n                                  will begin on January 1, 2026. Premium deductions will start with the first full pay period\n                             beginning on/after January 1, 2026. You may use your benefits as soon as your\n                              enrollment is confirmed.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "January 1, 2026"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the stated coverage date to ISO-8601",
+          "review_status": "approved"
+        },
+        "plan_effective_to": {
+          "state": "derived",
+          "value": "2026-12-31",
+          "evidence": [
+            {
+              "clause_id": "metlife-calendar-year-2026",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 23,
+              "char_start": 3172,
+              "char_end": 3324,
+              "quoted_text": "Calendar Year            The calendar year refers to the plan year, which is defined as January 1, 2026, to\n                          December 31, 2026.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "December 31, 2026"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the stated plan-year end to ISO-8601",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "deductible",
+        "rule_id": "metlife-deductible-abc-in-network-zero",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "A",
+              "B",
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-deductible-table",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 127,
+                "char_end": 1617,
+                "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class A",
+              "Class B",
+              "Class C"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-deductible-table",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 127,
+                "char_end": 1617,
+                "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "pool_id": {
+          "state": "assumed",
+          "value": "deductible:standard:abc-in-network-zero",
+          "assumption_id": "metlife-zero-deductible-pool-abc-v1",
+          "rationale": "A zero-dollar rule cannot consume an accumulator; this stable identifier is implementation identity only."
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 0,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-deductible-table",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 127,
+              "char_end": 1617,
+              "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "In-Network Standard Option: $0"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "0 dollars * 100 cents per dollar = 0 cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "assumed",
+          "value": "individual",
+          "assumption_id": "metlife-zero-deductible-individual-v1",
+          "rationale": "The MVP accepts only self-only claims, and the zero amount makes aggregation non-material."
+        }
+      },
+      {
+        "kind": "deductible",
+        "rule_id": "metlife-deductible-class-a-out-of-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "A"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-class-a-heading",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 25,
+                "char_start": 22,
+                "char_end": 107,
+                "quoted_text": "Section 5 Dental Services and Supplies\n                                 Class A Basic",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class A"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-deductible-table",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 127,
+                "char_end": 1617,
+                "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "pool_id": {
+          "state": "ambiguous",
+          "candidate_values": [
+            "deductible:standard:out-of-network:abc-combined",
+            "deductible:standard:out-of-network:class-a"
+          ],
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 524,
+              "char_end": 1046,
+              "quoted_text": "The calendar year deductible is $0, if you use an In- Network- provider. There is no family\n              deductible. If you elect to use an Out-of-Network provider, the Standard Option contains a $100\n             deductible per person, and the High Option has a $50 deductible per person. Neither Option contains\n            a family deductible, each enrolled covered person must satisfy their own deductible. The calendar\n             year deductible may apply to Type A expenses provided by an Out-of-Network provider.",
+              "rectangles": []
+            },
+            {
+              "clause_id": "metlife-class-b-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 29,
+              "char_start": 460,
+              "char_end": 858,
+              "quoted_text": "The calendar year deductible is $0, if you use an In-Network provider. Should you elect to use an\n            Out-of-Network provider, the Standard Option contains a $100 deductible per covered person, and\n             the High Option has a $50 deductible per covered person. Neither Option contains a family\n              deductible; each enrolled covered person must satisfy their own deductible.",
+              "rectangles": []
+            },
+            {
+              "clause_id": "metlife-class-c-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 33,
+              "char_start": 1128,
+              "char_end": 1524,
+              "quoted_text": "The calendar year deductible is $0 if you use an In-Network provider. Should you elect to use an\n            Out-of-Network provider the Standard Option contains a $100 deductible per covered person, and\n             the High Option has a $50 deductible per covered person. Neither Option contains a family\n              deductible, each enrolled covered person must satisfy their own deductible.",
+              "rectangles": []
+            }
+          ],
+          "reason": "The brochure repeats one $100 per-person deductible in each class section but does not explicitly state whether Classes A, B, and C share one calendar-year balance or maintain class-specific balances."
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 10000,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-deductible-table",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 127,
+              "char_end": 1617,
+              "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Out-of-Network Standard Option: $100"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "100 dollars * 100 cents per dollar = 10000 cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "sourced",
+          "value": "individual",
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 524,
+              "char_end": 1046,
+              "quoted_text": "The calendar year deductible is $0, if you use an In- Network- provider. There is no family\n              deductible. If you elect to use an Out-of-Network provider, the Standard Option contains a $100\n             deductible per person, and the High Option has a $50 deductible per person. Neither Option contains\n            a family deductible, each enrolled covered person must satisfy their own deductible. The calendar\n             year deductible may apply to Type A expenses provided by an Out-of-Network provider.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "per person"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        }
+      },
+      {
+        "kind": "deductible",
+        "rule_id": "metlife-deductible-class-b-out-of-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "B"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-class-b-heading",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 29,
+                "char_start": 30,
+                "char_end": 50,
+                "quoted_text": "Class B Intermediate",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class B"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-deductible-table",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 127,
+                "char_end": 1617,
+                "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "pool_id": {
+          "state": "ambiguous",
+          "candidate_values": [
+            "deductible:standard:out-of-network:abc-combined",
+            "deductible:standard:out-of-network:class-b"
+          ],
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 524,
+              "char_end": 1046,
+              "quoted_text": "The calendar year deductible is $0, if you use an In- Network- provider. There is no family\n              deductible. If you elect to use an Out-of-Network provider, the Standard Option contains a $100\n             deductible per person, and the High Option has a $50 deductible per person. Neither Option contains\n            a family deductible, each enrolled covered person must satisfy their own deductible. The calendar\n             year deductible may apply to Type A expenses provided by an Out-of-Network provider.",
+              "rectangles": []
+            },
+            {
+              "clause_id": "metlife-class-b-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 29,
+              "char_start": 460,
+              "char_end": 858,
+              "quoted_text": "The calendar year deductible is $0, if you use an In-Network provider. Should you elect to use an\n            Out-of-Network provider, the Standard Option contains a $100 deductible per covered person, and\n             the High Option has a $50 deductible per covered person. Neither Option contains a family\n              deductible; each enrolled covered person must satisfy their own deductible.",
+              "rectangles": []
+            },
+            {
+              "clause_id": "metlife-class-c-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 33,
+              "char_start": 1128,
+              "char_end": 1524,
+              "quoted_text": "The calendar year deductible is $0 if you use an In-Network provider. Should you elect to use an\n            Out-of-Network provider the Standard Option contains a $100 deductible per covered person, and\n             the High Option has a $50 deductible per covered person. Neither Option contains a family\n              deductible, each enrolled covered person must satisfy their own deductible.",
+              "rectangles": []
+            }
+          ],
+          "reason": "The brochure repeats one $100 per-person deductible in each class section but does not explicitly state whether Classes A, B, and C share one calendar-year balance or maintain class-specific balances."
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 10000,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-deductible-table",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 127,
+              "char_end": 1617,
+              "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Out-of-Network Standard Option: $100"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "100 dollars * 100 cents per dollar = 10000 cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "sourced",
+          "value": "individual",
+          "evidence": [
+            {
+              "clause_id": "metlife-class-b-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 29,
+              "char_start": 460,
+              "char_end": 858,
+              "quoted_text": "The calendar year deductible is $0, if you use an In-Network provider. Should you elect to use an\n            Out-of-Network provider, the Standard Option contains a $100 deductible per covered person, and\n             the High Option has a $50 deductible per covered person. Neither Option contains a family\n              deductible; each enrolled covered person must satisfy their own deductible.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "per covered person"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        }
+      },
+      {
+        "kind": "deductible",
+        "rule_id": "metlife-deductible-class-c-out-of-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-class-c-heading",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 33,
+                "char_start": 33,
+                "char_end": 46,
+                "quoted_text": "Class C Major",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class C"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-deductible-table",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 127,
+                "char_end": 1617,
+                "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "pool_id": {
+          "state": "ambiguous",
+          "candidate_values": [
+            "deductible:standard:out-of-network:abc-combined",
+            "deductible:standard:out-of-network:class-c"
+          ],
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 524,
+              "char_end": 1046,
+              "quoted_text": "The calendar year deductible is $0, if you use an In- Network- provider. There is no family\n              deductible. If you elect to use an Out-of-Network provider, the Standard Option contains a $100\n             deductible per person, and the High Option has a $50 deductible per person. Neither Option contains\n            a family deductible, each enrolled covered person must satisfy their own deductible. The calendar\n             year deductible may apply to Type A expenses provided by an Out-of-Network provider.",
+              "rectangles": []
+            },
+            {
+              "clause_id": "metlife-class-b-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 29,
+              "char_start": 460,
+              "char_end": 858,
+              "quoted_text": "The calendar year deductible is $0, if you use an In-Network provider. Should you elect to use an\n            Out-of-Network provider, the Standard Option contains a $100 deductible per covered person, and\n             the High Option has a $50 deductible per covered person. Neither Option contains a family\n              deductible; each enrolled covered person must satisfy their own deductible.",
+              "rectangles": []
+            },
+            {
+              "clause_id": "metlife-class-c-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 33,
+              "char_start": 1128,
+              "char_end": 1524,
+              "quoted_text": "The calendar year deductible is $0 if you use an In-Network provider. Should you elect to use an\n            Out-of-Network provider the Standard Option contains a $100 deductible per covered person, and\n             the High Option has a $50 deductible per covered person. Neither Option contains a family\n              deductible, each enrolled covered person must satisfy their own deductible.",
+              "rectangles": []
+            }
+          ],
+          "reason": "The brochure repeats one $100 per-person deductible in each class section but does not explicitly state whether Classes A, B, and C share one calendar-year balance or maintain class-specific balances."
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 10000,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-deductible-table",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 127,
+              "char_end": 1617,
+              "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $100\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Out-of-Network Standard Option: $100"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "100 dollars * 100 cents per dollar = 10000 cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "sourced",
+          "value": "individual",
+          "evidence": [
+            {
+              "clause_id": "metlife-class-c-deductible-per-person",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 33,
+              "char_start": 1128,
+              "char_end": 1524,
+              "quoted_text": "The calendar year deductible is $0 if you use an In-Network provider. Should you elect to use an\n            Out-of-Network provider the Standard Option contains a $100 deductible per covered person, and\n             the High Option has a $50 deductible per covered person. Neither Option contains a family\n              deductible, each enrolled covered person must satisfy their own deductible.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "per covered person"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "metlife-coinsurance-a-in-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "A"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class A"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 10000,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 1620,
+              "char_end": 2661,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "In-Network Standard Option: 0%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 total basis points - 0 member basis points = 10000 plan basis points",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "metlife-coinsurance-a-out-of-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "A"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class A"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 6000,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 1620,
+              "char_end": 2661,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Out-of-Network Standard Option: 40%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 total basis points - 4000 member basis points = 6000 plan basis points",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "metlife-coinsurance-b-in-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "B"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class B"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 5500,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 1620,
+              "char_end": 2661,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "In-Network Standard Option: 45%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 total basis points - 4500 member basis points = 5500 plan basis points",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "metlife-coinsurance-b-out-of-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "B"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class B"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 4000,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 1620,
+              "char_end": 2661,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Out-of-Network Standard Option: 60%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 total basis points - 6000 member basis points = 4000 plan basis points",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "metlife-coinsurance-c-in-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class C"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 3500,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 1620,
+              "char_end": 2661,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "In-Network Standard Option: 65%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 total basis points - 6500 member basis points = 3500 plan basis points",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "metlife-coinsurance-c-out-of-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class C"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 22,
+                "char_start": 1620,
+                "char_end": 2661,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 2000,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 22,
+              "char_start": 1620,
+              "char_end": 2661,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Out-of-Network Standard Option: 80%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 total basis points - 8000 member basis points = 2000 plan basis points",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "annual_maximum",
+        "rule_id": "metlife-maximum-abc-combined-network",
+        "scope": {
+          "service_classes": {
+            "state": "assumed",
+            "value": [
+              "A",
+              "B",
+              "C"
+            ],
+            "assumption_id": "metlife-non-orthodontia-scope-abc-v1",
+            "rationale": "The case boundary maps the brochure's non-orthodontia annual maximum to implemented Classes A, B, and C only."
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network",
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-standard-annual-maximum-combined",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 23,
+                "char_start": 1,
+                "char_end": 697,
+                "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between In and Out-of-Network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                           Annual Benefit Maximum.\n\n                         Annual Benefits Maximum\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $2,000\n                            Out-of-Network High Option: Unlimited\n                            Out-of-Network Standard Option: $2,000",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "combined between In and Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "maximum:standard:combined-network",
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-annual-maximum-combined",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 23,
+              "char_start": 1,
+              "char_end": 697,
+              "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between In and Out-of-Network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                           Annual Benefit Maximum.\n\n                         Annual Benefits Maximum\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $2,000\n                            Out-of-Network High Option: Unlimited\n                            Out-of-Network Standard Option: $2,000",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "combined between In and Out-of-Network services",
+            "In-Network Standard Option: $2,000",
+            "Out-of-Network Standard Option: $2,000"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the explicit combined in/out-of-network Standard maximum into one pool identifier",
+          "review_status": "approved"
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 200000,
+          "evidence": [
+            {
+              "clause_id": "metlife-standard-annual-maximum-combined",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 23,
+              "char_start": 1,
+              "char_end": 697,
+              "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between In and Out-of-Network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                           Annual Benefit Maximum.\n\n                         Annual Benefits Maximum\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $2,000\n                            Out-of-Network High Option: Unlimited\n                            Out-of-Network Standard Option: $2,000",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "In-Network Standard Option: $2,000",
+            "Out-of-Network Standard Option: $2,000"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "2000 dollars * 100 cents per dollar = 200000 cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "sourced",
+          "value": "individual",
+          "evidence": [
+            {
+              "clause_id": "metlife-annual-maximum-definition",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 58,
+              "char_start": 412,
+              "char_end": 497,
+              "quoted_text": "Annual Benefit            The maximum annual benefit that you can receive per person.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "per person"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        }
+      },
+      {
+        "kind": "frequency",
+        "rule_id": "metlife-frequency-examinations-combined",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "A"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-class-a-heading",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 25,
+                "char_start": 22,
+                "char_end": 107,
+                "quoted_text": "Section 5 Dental Services and Supplies\n                                 Class A Basic",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class A"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "assumed",
+            "value": [
+              "in_network",
+              "out_of_network"
+            ],
+            "assumption_id": "metlife-metlife-class-a-frequency-groups-both-networks-v1",
+            "rationale": "The limitation is stated without a network qualifier; the case-bounded benchmark applies it in both network states."
+          },
+          "codes": {
+            "state": "sourced",
+            "value": [
+              "D0120",
+              "D0145",
+              "D0150",
+              "D0180"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-class-a-frequency-groups",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 25,
+                "char_start": 1531,
+                "char_end": 2673,
+                "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "D0120",
+              "D0145",
+              "D0150",
+              "D0180"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "applicability": {
+          "state": "sourced",
+          "value": true,
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "are combined and limited to two exams in a 12-month period"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "frequency:examinations:combined-rolling-12-month",
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "D0120",
+            "D0145",
+            "D0150",
+            "D0180",
+            "combined and limited to two exams in a 12-month period"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the explicitly combined four-code examination limitation into one rolling-window pool",
+          "review_status": "approved"
+        },
+        "quantity": {
+          "state": "sourced",
+          "value": 2,
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "limited to two exams"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "basis": {
+          "state": "derived",
+          "value": "rolling_period",
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "12-month period from the date services were last rendered"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize a period measured from the last service date as a rolling period",
+          "review_status": "approved"
+        },
+        "period_months": {
+          "state": "sourced",
+          "value": 12,
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "12-month period"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "unit": {
+          "state": "assumed",
+          "value": "member",
+          "assumption_id": "metlife-examinations-member-unit-v1",
+          "rationale": "The selected oral-evaluation limit is person-level and has no tooth, quadrant, or arch qualifier."
+        }
+      },
+      {
+        "kind": "frequency",
+        "rule_id": "metlife-frequency-full-mouth-images-combined",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "A"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-class-a-heading",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 25,
+                "char_start": 22,
+                "char_end": 107,
+                "quoted_text": "Section 5 Dental Services and Supplies\n                                 Class A Basic",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class A"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "assumed",
+            "value": [
+              "in_network",
+              "out_of_network"
+            ],
+            "assumption_id": "metlife-metlife-class-a-frequency-groups-both-networks-v1",
+            "rationale": "The limitation is stated without a network qualifier; the case-bounded benchmark applies it in both network states."
+          },
+          "codes": {
+            "state": "sourced",
+            "value": [
+              "D0210",
+              "D0330"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-class-a-frequency-groups",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 25,
+                "char_start": 1531,
+                "char_end": 2673,
+                "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "D0210",
+              "D0330"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "applicability": {
+          "state": "sourced",
+          "value": true,
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "D0330 Panoramic radiographic image are combined and limited to one every 60 months"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "frequency:full-mouth-images:combined-rolling-60-month",
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "D0210",
+            "D0330",
+            "combined and limited to one every 60 months"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the explicitly combined two-code image limitation into one rolling-window pool",
+          "review_status": "approved"
+        },
+        "quantity": {
+          "state": "sourced",
+          "value": 1,
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "limited to one every 60 months"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "basis": {
+          "state": "derived",
+          "value": "rolling_period",
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "one every 60 months"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize every-60-month language as a rolling period",
+          "review_status": "approved"
+        },
+        "period_months": {
+          "state": "sourced",
+          "value": 60,
+          "evidence": [
+            {
+              "clause_id": "metlife-class-a-frequency-groups",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 25,
+              "char_start": 1531,
+              "char_end": 2673,
+              "quoted_text": "Exams, oral evaluations and treatments such as fluorides and some images are combined under one\n              limitation under the plan. D0210 Intraoral – comprehensive series of radiographic images and/or\n          D0330 Panoramic radiographic image are combined and limited to one every 60 months. D0120\n             Periodic oral evaluation - established patient, D0145 Oral evaluation for a patient under three years\n             of age and counseling with primary caregiver, D0150 Comprehensive oral evaluation - new or\n              established patient, and D0180 Comprehensive periodontal evaluation - new or established patient\n             are combined and limited to two exams in a 12-month period from the date services were last\n             rendered. For example, if you have a periodic oral evaluation and a comprehensive oral\n             examination, both services are combined, so that, not more than the maximum allowable benefits\n           and limitations are applied. D0140 Limited oral evaluation - problem focused is not combined with\n             other examinations and has a separate frequency of one every 12 months.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "60 months"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "unit": {
+          "state": "assumed",
+          "value": "member",
+          "assumption_id": "metlife-images-member-unit-v1",
+          "rationale": "The selected full-mouth image limit has no tooth, quadrant, or arch qualifier."
+        }
+      },
+      {
+        "kind": "alternate_benefit",
+        "rule_id": "metlife-alternate-metallic-inlays",
+        "scope": {
+          "service_classes": {
+            "state": "derived",
+            "value": [
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-class-c-heading",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 33,
+                "char_start": 33,
+                "char_end": 46,
+                "quoted_text": "Class C Major",
+                "rectangles": []
+              },
+              {
+                "clause_id": "metlife-inlay-alternate-benefit-list",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 34,
+                "char_start": 569,
+                "char_end": 815,
+                "quoted_text": "D2510 Inlay - metallic – one surface – An alternate benefit will be provided\n  D2520 Inlay - metallic – two surfaces – An alternate benefit will be provided\n  D2530 Inlay - metallic - three or more surfaces – An alternate benefit will be provided",
+                "rectangles": []
+              }
+            ],
+            "source_fragments": [
+              "Class C Major",
+              "D2510 Inlay"
+            ],
+            "derivation_kind": "cross_clause_link",
+            "expression": "link the inlay table to its enclosing Class C Major section heading",
+            "review_status": "approved"
+          },
+          "network_states": {
+            "state": "assumed",
+            "value": [
+              "in_network",
+              "out_of_network"
+            ],
+            "assumption_id": "metlife-inlay-alternate-both-networks-v1",
+            "rationale": "The alternate-benefit provision explicitly applies even in-network and does not exempt out-of-network services."
+          },
+          "codes": {
+            "state": "sourced",
+            "value": [
+              "D2510",
+              "D2520",
+              "D2530"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-inlay-alternate-benefit-list",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 34,
+                "char_start": 569,
+                "char_end": 815,
+                "quoted_text": "D2510 Inlay - metallic – one surface – An alternate benefit will be provided\n  D2520 Inlay - metallic – two surfaces – An alternate benefit will be provided\n  D2530 Inlay - metallic - three or more surfaces – An alternate benefit will be provided",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "D2510",
+              "D2520",
+              "D2530"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "applicability": {
+          "state": "sourced",
+          "value": true,
+          "evidence": [
+            {
+              "clause_id": "metlife-inlay-alternate-benefit-list",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 34,
+              "char_start": 569,
+              "char_end": 815,
+              "quoted_text": "D2510 Inlay - metallic – one surface – An alternate benefit will be provided\n  D2520 Inlay - metallic – two surfaces – An alternate benefit will be provided\n  D2530 Inlay - metallic - three or more surfaces – An alternate benefit will be provided",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "An alternate benefit will be provided"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "benefited_code": {
+          "state": "missing_source",
+          "required_kind": "clinical_policy",
+          "reason": "The brochure says an alternate benefit will be provided but leaves selection of the professionally acceptable less-costly service to MetLife review."
+        },
+        "difference_treatment": {
+          "state": "missing_source",
+          "required_kind": "clinical_policy",
+          "reason": "The brochure permits the dentist to charge a difference but does not declare the monetary operands needed for deterministic reconciliation of these inlays."
+        },
+        "requires_clinical_review": {
+          "state": "sourced",
+          "value": true,
+          "evidence": [
+            {
+              "clause_id": "metlife-alternate-benefit-and-review",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 18,
+              "char_start": 1,
+              "char_end": 4039,
+              "quoted_text": "Pre-Treatment Estimate   A pre-treatment estimate of benefits is recommended for any procedure which is\n                                anticipated to cost at least $300 or which involves mandatory consultant review.\n                          Mandatory consultant review applies to services such as but not limited to, periodontal\n                                  services, crowns, bridges, inlays/onlays (when performed together) veneers, implants\n                          (when a plan provides benefits for these procedures) and overdentures, among other\n                                  services. When your dentist suggests treatment, have them send a claim form, along with\n                                the proposed treatment plan and supporting documentation to MetLife. An explanation\n                               of benefits (EOB) will be sent to you and the dentist detailing an estimate of what\n                                services MetLife will cover and at what payment level. Actual payments may vary from\n                                the pre-treatment estimate depending upon annual maximums, deductibles, plan\n                             frequency limits and other plan provisions at time of payment.\n\n Alternate Benefit            Alternate benefits applicable to your treatment plan will be determined during Pre-\n                                    certification. However, should the services billed differ from those pre-certified, MetLife\n                                reserves the right to determine if an Alternate Benefit is applicable to the actual services\n                               rendered.\n\n                                       If MetLife determines that a less costly covered service other than the covered service\n                                the dentist performed could have been performed to treat a dental condition we will pay\n                                 benefits based upon the less costly service if such service would produce a professionally\n                               acceptable result under generally accepted dental standards\n\n                         For example, when an amalgam filling and a composite filling are both professionally\n                               acceptable methods for filling a molar, or when a partial denture and fixed bridgework\n                                are both professionally acceptable methods for replacing multiple missing teeth in an\n                              arch we may base our benefit determination upon the amalgam filling or partial denture\n                          which is the less costly service.\n\n                                       If we pay benefits based upon a less costly service in accordance with this section the\n                               Dentist may charge you or your dependent for the difference between the service that\n                         was performed and the less costly service. This is the case even if the service is\n                            performed by an In-Network dentist.\n\n Dental Review               MetLife's claim review is conducted by licensed dentist consultants who review the\n                                   clinical documentation submitted by your treating dentist. These dentist consultants\n                            review this material checking for dental necessity for certain procedures such as crowns,\n                                bridges, onlays, implants, periodontal treatments, as well as other services. The dentist\n                                consultants may also recommend that an alternate benefit be applied to a service in\n                             accordance with the terms of the plan. Therefore, we strongly recommend that you or\n                            your dentist request a pre-treatment estimate for services that are expected to cost at least\n                             $300, so that, you and your dentist are aware of the coverage terms and benefits before\n                                services are performed.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Mandatory consultant review applies",
+            "inlays/onlays"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        }
+      },
+      {
+        "kind": "alternate_benefit",
+        "rule_id": "metlife-alternate-d2952-review-applicability",
+        "scope": {
+          "service_classes": {
+            "state": "derived",
+            "value": [
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-class-c-heading",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 33,
+                "char_start": 33,
+                "char_end": 46,
+                "quoted_text": "Class C Major",
+                "rectangles": []
+              },
+              {
+                "clause_id": "metlife-post-code-list",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 34,
+                "char_start": 2407,
+                "char_end": 2569,
+                "quoted_text": "D2952 Post and core in addition to crown, indirectly fabricated - Limited to 1 per tooth every 60 months.\n  D2954 Prefabricated post and core in addition to crown",
+                "rectangles": []
+              }
+            ],
+            "source_fragments": [
+              "Class C Major",
+              "D2952 Post and core"
+            ],
+            "derivation_kind": "cross_clause_link",
+            "expression": "link D2952 to the enclosing Class C Major section",
+            "review_status": "approved"
+          },
+          "network_states": {
+            "state": "assumed",
+            "value": [
+              "in_network",
+              "out_of_network"
+            ],
+            "assumption_id": "metlife-d2952-review-both-networks-v1",
+            "rationale": "The general alternate-benefit and dental-review clauses do not state a network exception."
+          },
+          "codes": {
+            "state": "sourced",
+            "value": [
+              "D2952"
+            ],
+            "evidence": [
+              {
+                "clause_id": "metlife-post-code-list",
+                "document_id": "fedvip-2026-metlife-standard-02AP-11",
+                "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+                "page_number": 34,
+                "char_start": 2407,
+                "char_end": 2569,
+                "quoted_text": "D2952 Post and core in addition to crown, indirectly fabricated - Limited to 1 per tooth every 60 months.\n  D2954 Prefabricated post and core in addition to crown",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "D2952"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "applicability": {
+          "state": "ambiguous",
+          "candidate_values": [
+            true,
+            false
+          ],
+          "evidence": [
+            {
+              "clause_id": "metlife-alternate-benefit-and-review",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 18,
+              "char_start": 1,
+              "char_end": 4039,
+              "quoted_text": "Pre-Treatment Estimate   A pre-treatment estimate of benefits is recommended for any procedure which is\n                                anticipated to cost at least $300 or which involves mandatory consultant review.\n                          Mandatory consultant review applies to services such as but not limited to, periodontal\n                                  services, crowns, bridges, inlays/onlays (when performed together) veneers, implants\n                          (when a plan provides benefits for these procedures) and overdentures, among other\n                                  services. When your dentist suggests treatment, have them send a claim form, along with\n                                the proposed treatment plan and supporting documentation to MetLife. An explanation\n                               of benefits (EOB) will be sent to you and the dentist detailing an estimate of what\n                                services MetLife will cover and at what payment level. Actual payments may vary from\n                                the pre-treatment estimate depending upon annual maximums, deductibles, plan\n                             frequency limits and other plan provisions at time of payment.\n\n Alternate Benefit            Alternate benefits applicable to your treatment plan will be determined during Pre-\n                                    certification. However, should the services billed differ from those pre-certified, MetLife\n                                reserves the right to determine if an Alternate Benefit is applicable to the actual services\n                               rendered.\n\n                                       If MetLife determines that a less costly covered service other than the covered service\n                                the dentist performed could have been performed to treat a dental condition we will pay\n                                 benefits based upon the less costly service if such service would produce a professionally\n                               acceptable result under generally accepted dental standards\n\n                         For example, when an amalgam filling and a composite filling are both professionally\n                               acceptable methods for filling a molar, or when a partial denture and fixed bridgework\n                                are both professionally acceptable methods for replacing multiple missing teeth in an\n                              arch we may base our benefit determination upon the amalgam filling or partial denture\n                          which is the less costly service.\n\n                                       If we pay benefits based upon a less costly service in accordance with this section the\n                               Dentist may charge you or your dependent for the difference between the service that\n                         was performed and the less costly service. This is the case even if the service is\n                            performed by an In-Network dentist.\n\n Dental Review               MetLife's claim review is conducted by licensed dentist consultants who review the\n                                   clinical documentation submitted by your treating dentist. These dentist consultants\n                            review this material checking for dental necessity for certain procedures such as crowns,\n                                bridges, onlays, implants, periodontal treatments, as well as other services. The dentist\n                                consultants may also recommend that an alternate benefit be applied to a service in\n                             accordance with the terms of the plan. Therefore, we strongly recommend that you or\n                            your dentist request a pre-treatment estimate for services that are expected to cost at least\n                             $300, so that, you and your dentist are aware of the coverage terms and benefits before\n                                services are performed.",
+              "rectangles": []
+            },
+            {
+              "clause_id": "metlife-post-code-list",
+              "document_id": "fedvip-2026-metlife-standard-02AP-11",
+              "document_sha256": "86de8ef5e1147eb376688acaedfd7489e4728475247723ca831573ec72f49ebe",
+              "page_number": 34,
+              "char_start": 2407,
+              "char_end": 2569,
+              "quoted_text": "D2952 Post and core in addition to crown, indirectly fabricated - Limited to 1 per tooth every 60 months.\n  D2954 Prefabricated post and core in addition to crown",
+              "rectangles": []
+            }
+          ],
+          "reason": "The brochure lists D2952 without a code-specific alternate annotation but reserves alternate-benefit and dental-review determinations broadly; it never states whether D2952 is excluded from that review."
+        },
+        "benefited_code": {
+          "state": "missing_source",
+          "required_kind": "clinical_policy",
+          "reason": "If review applies to D2952, the brochure does not identify the professionally acceptable less-costly benefited code."
+        },
+        "difference_treatment": {
+          "state": "missing_source",
+          "required_kind": "clinical_policy",
+          "reason": "If review applies to D2952, the brochure does not provide deterministic monetary operands for the alternate-benefit difference."
+        },
+        "requires_clinical_review": {
+          "state": "missing_source",
+          "required_kind": "clinical_policy",
+          "reason": "The brochure does not decide whether this D2952 line enters clinical review."
+        }
+      }
+    ],
+    "rounding_policy": {
+      "state": "assumed",
+      "value": {
+        "mode": "half_up",
+        "increment_cents": 1,
+        "round_after": [
+          "deductible",
+          "coinsurance",
+          "annual_maximum",
+          "final_split"
+        ],
+        "residual_policy": "assign_residual_to_member_cost_share"
+      },
+      "assumption_id": "arbiter-default-rounding-v1",
+      "rationale": "The reviewed brochure does not declare claim-calculation rounding; the benchmark model declares half-up cent rounding at every implemented monetary stage."
+    },
+    "line_ordering_policy": {
+      "state": "assumed",
+      "value": {
+        "keys": [
+          "date_of_service",
+          "source_sequence",
+          "line_id"
+        ]
+      },
+      "assumption_id": "arbiter-canonical-line-order-v1",
+      "rationale": "The brochure does not state same-claim accumulator allocation order; ARBITER declares a deterministic benchmark order."
+    }
+  },
+  "review_findings": [
+    {
+      "finding_id": "metlife-deductible-pool-ambiguity-001",
+      "severity": "material_at_boundary",
+      "summary": "The brochure repeats the same per-person Standard out-of-network deductible under Classes A, B, and C without explicitly declaring whether the class balances are combined.",
+      "rule_ids": [
+        "metlife-deductible-class-a-out-of-network",
+        "metlife-deductible-class-b-out-of-network",
+        "metlife-deductible-class-c-out-of-network"
+      ]
+    },
+    {
+      "finding_id": "metlife-inlay-clinical-policy-001",
+      "severity": "material",
+      "summary": "The brochure flags metallic inlays for alternate benefit and mandatory consultant review but does not name the benefited code or deterministic reconciliation operands.",
+      "rule_ids": [
+        "metlife-alternate-metallic-inlays"
+      ]
+    },
+    {
+      "finding_id": "metlife-d2952-review-applicability-001",
+      "severity": "material",
+      "summary": "The code table lists D2952 without the explicit alternate annotation used for inlays, while the general alternate-benefit clause does not exclude D2952; clinical policy is required to decide applicability and the benefited service.",
+      "rule_ids": [
+        "metlife-alternate-d2952-review-applicability"
+      ]
+    }
+  ]
+}

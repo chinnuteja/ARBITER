@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#08111f" />
+    <meta name="description" content="ARBITER turns reviewed dental plan language into deterministic, evidence-linked claim decisions." />
+    <title>ARBITER — Evidence-gated dental benefits</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to claim comparison</a>
+
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#overview" aria-label="ARBITER overview">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+          <span><strong>ARBITER</strong><small>Evidence-gated adjudication</small></span>
+        </a>
+        <nav aria-label="Product sections">
+          <a href="#comparison">Decision</a>
+          <a href="#trace">Trace</a>
+          <a href="#benchmark">AI audit</a>
+        </nav>
+        <div class="engine-status"><span></span> Deterministic core online</div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="overview">
+        <div class="wrap hero-grid">
+          <div class="hero-copy-block">
+            <p class="eyebrow light">CONTRACT-GROUNDED DENTAL BENEFITS</p>
+            <h1>Same claim.<br /><em>$300 apart.</em><br />Every dollar traced.</h1>
+            <p class="hero-copy">ARBITER converts reviewed plan language into deterministic claim outcomes—then links every calculation to the sentence that caused it. Missing evidence never becomes a confident guess.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#comparison">Review the decision <span>↓</span></a>
+              <a class="button ghost" href="#benchmark">See where AI failed</a>
+            </div>
+            <div class="proof-row" aria-label="Validation summary">
+              <div><strong>60/60</strong><span>frozen engine outcomes</span></div>
+              <div><strong>2</strong><span>human-audited plan specs</span></div>
+              <div><strong>6/6</strong><span>Gemini compiler passes</span></div>
+            </div>
+          </div>
+
+          <aside class="decision-preview" aria-label="Opening claim result">
+            <div class="preview-topline"><span>LEAD CASE · B01</span><span class="live-chip"><i></i> VERIFIED RUN</span></div>
+            <div class="preview-claim">
+              <span class="tooth-code">D2740</span>
+              <div><strong>Two porcelain crowns</strong><small>Same member · same date · same network</small></div>
+            </div>
+            <div class="preview-results">
+              <div><span>Delta Standard</span><strong id="hero-delta-pay">$400</strong><small>plan pays</small></div>
+              <div class="difference"><span>MetLife Standard</span><strong id="hero-metlife-pay">$700</strong><small>plan pays</small></div>
+            </div>
+            <div class="preview-gap"><span>Difference for identical treatment</span><strong id="hero-gap">+$300</strong></div>
+            <p id="hero-reason">Delta’s annual maximum is exhausted on the second crown. MetLife’s is not.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="case-bar" aria-label="Reviewed case selection">
+        <div class="wrap case-bar-inner">
+          <label for="case-picker"><span>Reviewed scenario</span><select id="case-picker" aria-describedby="case-summary"></select></label>
+          <div id="case-meta" class="case-meta" aria-live="polite"></div>
+          <a class="quiet-link" href="#claim">View submitted lines <span>→</span></a>
+        </div>
+      </section>
+
+      <section class="section wrap" id="comparison" aria-labelledby="comparison-heading">
+        <div class="section-heading split-heading">
+          <div><p class="eyebrow">DETERMINISTIC DECISION</p><h2 id="comparison-heading">One treatment plan.<br />Two contract outcomes.</h2></div>
+          <div class="heading-note"><span class="shield-icon" aria-hidden="true">✓</span><p><strong>No model decides the dollars.</strong><br />The engine evaluates only reviewed, versioned rules.</p></div>
+        </div>
+        <div id="plan-cards" class="plan-grid" aria-live="polite"></div>
+        <div id="divergence-insight" class="divergence-insight"></div>
+      </section>
+
+      <section class="section wrap claim-section" id="claim" aria-labelledby="claim-heading">
+        <div class="section-heading compact-heading"><div><p class="eyebrow">SUBMITTED INPUT</p><h2 id="claim-heading">The claim did not change.</h2></div><p id="claim-id" class="microcopy"></p></div>
+        <div class="table-shell"><table><thead><tr><th>Order</th><th>Procedure</th><th>Class</th><th>Network</th><th>Service date</th><th>Submitted</th></tr></thead><tbody id="claim-lines"></tbody></table></div>
+      </section>
+
+      <section class="section trace-section" id="trace" aria-labelledby="trace-heading">
+        <div class="wrap">
+          <div class="section-heading split-heading inverse">
+            <div><p class="eyebrow light">EXPLAINABLE BY CONSTRUCTION</p><h2 id="trace-heading">Follow the money,<br />rule by rule.</h2></div>
+            <p class="trace-intro">Eligibility, alternate benefit, deductible, coinsurance and annual maximum are applied in declared order. Nothing is reconstructed after the fact.</p>
+          </div>
+          <div id="trace-tabs" class="tabs" role="tablist" aria-label="Select plan trace"></div>
+          <div id="trace-content" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section wrap evidence-section" aria-labelledby="evidence-heading">
+        <div class="section-heading compact-heading"><div><p class="eyebrow">CONTRACT EVIDENCE</p><h2 id="evidence-heading">The sentences behind the result.</h2></div><p class="microcopy">Exact excerpts from the reviewed public brochure · active plan only</p></div>
+        <div id="evidence-content" class="evidence-grid"></div>
+      </section>
+
+      <section class="section benchmark-section" id="benchmark" aria-labelledby="benchmark-heading">
+        <div class="wrap">
+          <div class="section-heading split-heading">
+            <div><p class="eyebrow">AI COMPILER AUDIT</p><h2 id="benchmark-heading">Strong model.<br />Unsafe confidence.</h2></div>
+            <p class="benchmark-intro">Gemini extracted useful arithmetic from both brochures. But when the contract stopped being explicit, it sometimes supplied certainty the document did not contain.</p>
+          </div>
+          <div id="benchmark-summary" class="benchmark-summary" aria-live="polite"></div>
+          <div id="benchmark-findings" class="finding-grid"></div>
+          <div class="benchmark-method">
+            <span class="method-mark" aria-hidden="true">i</span>
+            <p><strong>Independent evaluation.</strong> Three compiler passes per plan. Gold specifications were excluded from every prompt and used only after extraction for field-level scoring. Model output never entered the deterministic claim engine.</p>
+            <span id="benchmark-run" class="run-id"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing wrap" aria-label="ARBITER product principle">
+        <p class="eyebrow">THE PRODUCT PRINCIPLE</p>
+        <blockquote>“Use AI to find the rule.<br /><em>Require evidence before it moves money.</em>”</blockquote>
+        <div><span>Reviewed specifications</span><i></i><span>Deterministic evaluation</span><i></i><span>Clause-level audit</span></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap footer-inner"><div><strong>ARBITER</strong><span>Dental benefits, grounded in the contract.</span></div><p>MODELED benchmark outcomes only · not a carrier payment guarantee</p></div>
+    </footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>

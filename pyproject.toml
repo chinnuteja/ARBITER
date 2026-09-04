@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arbiter-dental"
+version = "0.1.0"
+description = "Deterministic, evidence-linked dental benefit adjudication demonstrator"
+requires-python = ">=3.12"
+dependencies = ["google-genai>=1.0,<2", "openai>=1.81,<3", "pydantic>=2.11,<3", "PyYAML>=6,<7", "requests>=2.32,<3"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"

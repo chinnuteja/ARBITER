@@ -1,0 +1,61 @@
+{
+  "run_id": "compiler-vertex-v3",
+  "status": "complete",
+  "model": "gemini-3.5-flash",
+  "provider": "vertex",
+  "completed_calls": 6,
+  "requested_calls": 6,
+  "prompt_version": "arbiter-compiler-extraction-v1",
+  "gold_excluded_from_prompt": true,
+  "metrics": {
+    "delta": {
+      "label": "Delta Dental · Standard",
+      "trial_count": 3,
+      "stable_fields": 18,
+      "field_count": 92,
+      "coverage_rate": 0.1232,
+      "unsafe_assertions": 0,
+      "safe_abstentions": 0
+    },
+    "metlife": {
+      "label": "MetLife · Standard",
+      "trial_count": 3,
+      "stable_fields": 15,
+      "field_count": 79,
+      "coverage_rate": 0.0844,
+      "unsafe_assertions": 4,
+      "safe_abstentions": 0
+    }
+  },
+  "unsafe_assertion_count": 4,
+  "unsafe_examples": [
+    {
+      "plan": "metlife",
+      "trial": "trial-1",
+      "gold_path": "rules.metlife-alternate-d2952-review-applicability.applicability",
+      "gold_state": "ambiguous",
+      "field_name": "applicability",
+      "model_state": "sourced",
+      "model_value": "always",
+      "model_scope": {
+        "codes": ["D2510", "D2520", "D2530"],
+        "network_states": [],
+        "service_classes": []
+      }
+    },
+    {
+      "plan": "metlife",
+      "trial": "trial-2",
+      "gold_path": "rules.metlife-alternate-metallic-inlays.difference_treatment",
+      "gold_state": "missing_source",
+      "field_name": "difference_treatment",
+      "model_state": "sourced",
+      "model_value": "patient_pays_difference",
+      "model_scope": {
+        "codes": ["D2510", "D2520", "D2530"],
+        "network_states": [],
+        "service_classes": []
+      }
+    }
+  ]
+}
