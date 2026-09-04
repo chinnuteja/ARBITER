@@ -22,7 +22,7 @@
           <a href="#trace">Trace</a>
           <a href="#benchmark">AI audit</a>
         </nav>
-        <div class="engine-status"><span></span> Deterministic core online</div>
+        <button class="overview-trigger" type="button" data-open-overview aria-haspopup="dialog">About &amp; sources <span aria-hidden="true">↗</span></button>
       </div>
     </header>
 
@@ -93,8 +93,12 @@
         </div>
       </section>
 
-      <section class="section wrap evidence-section" aria-labelledby="evidence-heading">
+      <section class="section wrap evidence-section" id="evidence" aria-labelledby="evidence-heading">
         <div class="section-heading compact-heading"><div><p class="eyebrow">CONTRACT EVIDENCE</p><h2 id="evidence-heading">The sentences behind the result.</h2></div><p class="microcopy">Exact excerpts from the reviewed public brochure · active plan only</p></div>
+        <div class="source-library">
+          <div><strong>Source brochures</strong><p>2026 FEDVIP · Standard options reviewed. Full PDFs hosted by the U.S. Office of Personnel Management; include High options too.</p></div>
+          <div class="source-links" data-source-links></div>
+        </div>
         <div id="evidence-content" class="evidence-grid"></div>
       </section>
 
@@ -124,6 +128,20 @@
     <footer>
       <div class="wrap footer-inner"><div><strong>ARBITER</strong><span>Dental benefits, grounded in the contract.</span></div><p>MODELED benchmark outcomes only · not a carrier payment guarantee</p></div>
     </footer>
+    <dialog id="overview-dialog" class="overview-dialog" aria-labelledby="overview-title" aria-describedby="overview-description">
+      <div class="overview-top"><span class="eyebrow">ARBITER / 20-SECOND OVERVIEW</span><button type="button" class="overview-close" aria-label="Close overview" data-close-overview>×</button></div>
+      <h2 id="overview-title">A claim decision<br />you can inspect.</h2>
+      <p id="overview-description">ARBITER calculates dental benefits from reviewed plan rules and links each applied rule to its evidence.</p>
+      <div class="overview-example"><span>START WITH B01 · TWO CROWNS</span><p><strong>$400 Delta <i>vs.</i> $700 MetLife</strong>Delta’s annual maximum runs out on the second crown.</p></div>
+      <nav class="overview-map" aria-label="Explore the demonstration">
+        <a href="#comparison" data-overview-destination="comparison"><strong>Decision <span>→</span></strong><small>Compare plan and member amounts.</small></a>
+        <a href="#trace" data-overview-destination="trace"><strong>Trace <span>→</span></strong><small>Follow the calculation to the source clauses.</small></a>
+        <a href="#benchmark" data-overview-destination="benchmark"><strong>AI audit <span>→</span></strong><small>Inspect extraction errors against reviewed rules.</small></a>
+      </nav>
+      <p class="overview-scope">Working prototype · two reviewed plans · synthetic claims and allowances. PDF extraction is evaluated separately.</p>
+      <div class="overview-sources"><span>2026 OPM BROCHURES · STANDARD OPTIONS REVIEWED</span><div class="source-links" data-source-links></div></div>
+      <button type="button" id="overview-start" class="button primary">Open the $300 comparison <span aria-hidden="true">→</span></button>
+    </dialog>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="/app.js"></script>
   </body>
