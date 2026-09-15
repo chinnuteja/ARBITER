@@ -28,6 +28,13 @@ AI-audit section shows a six-pass Gemini 3.5 Flash extraction benchmark, where
 the model made four unsafe assertions rather than abstaining. The public demo is
 reproducible: it does not need an API key or make a live model call.
 
+## Deploy the demonstrator to Vercel
+
+The repository includes a FastAPI deployment adapter in `app.py`. Import this
+repository into Vercel and deploy it with the default Python settings. The
+hosted app runs the same read-only, deterministic claim-review API as the local
+demo; it does not require an API key.
+
 ## Design
 
 - **AI assists extraction; it never decides payment.** A reviewed typed spec is
