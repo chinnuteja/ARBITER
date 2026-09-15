@@ -1,5 +1,10 @@
 const dollar = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 const state = { payload: null, benchmark: null, activePlan: 'delta' };
+// Original public brochure URLs recorded in the frozen source manifest.
+const brochureUrls = {
+  delta: 'https://www.opm.gov/healthcare-insurance/healthcare/plan-information/plans/pdf/2026/brochures/02AP-05.pdf',
+  metlife: 'https://www.opm.gov/healthcare-insurance/healthcare/plan-information/plans/pdf/2026/brochures/02AP-11.pdf'
+};
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -7,6 +12,45 @@ const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, (character
 const money = (cents) => cents == null ? '—' : dollar.format(cents / 100);
 const title = (value) => String(value ?? '').replaceAll('_', ' ').replace(/\b\w/g, (character) => character.toUpperCase());
 const percent = (value) => `${(Number(value) * 100).toFixed(1)}%`;
+
+function initOverview() {
+  const dialog = $('#overview-dialog');
+  const seenKey = 'arbiter-overview-v1';
+  const sourceLinks = Object.entries(brochureUrls).map(([plan, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Open ${plan === 'delta' ? 'Delta Dental' : 'MetLife'} 2026 brochure PDF in a new tab">${plan === 'delta' ? 'Delta Dental' : 'MetLife'} <span>PDF ↗</span></a>`).join('');
+  $$('[data-source-links]').forEach((element) => { element.innerHTML = sourceLinks; });
+  $$('[data-open-overview]').forEach((button) => button.addEventListener('click', () => dialog.showModal()));
+  $('[data-close-overview]').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => {
+    try { localStorage.setItem(seenKey, 'seen'); } catch (_) { /* Storage is optional. */ }
+  });
+  const goTo = (id) => {
+    dialog.close();
+    const section = document.getElementById(id);
+    section.setAttribute('tabindex', '-1');
+    section.focus({ preventScroll: true });
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  $$('[data-overview-destination]').forEach((link) => link.addEventListener('click', (event) => {
+    event.preventDefault();
+    goTo(link.dataset.overviewDestination);
+  }));
+  $('#overview-start').addEventListener('click', async () => {
+    const button = $('#overview-start');
+    button.disabled = true;
+    try {
+      if (state.payload?.case.case_id !== 'B01') {
+        await loadCase('B01');
+        $('#case-picker').value = 'B01';
+      }
+      goTo('comparison');
+    } catch (_) { showToast('The comparison could not load. Please try again.'); }
+    finally { button.disabled = false; }
+  });
+  let seen = false;
+  try { seen = localStorage.getItem(seenKey) === 'seen'; } catch (_) { /* Show once this visit. */ }
+  // Respect links to a specific section; the overview remains available in the header.
+  if (!seen && !window.location.hash) dialog.showModal();
+}
 
 async function api(path) {
   const response = await fetch(path);
@@ -159,7 +203,7 @@ function renderEvidence() {
   $('#evidence-content').innerHTML = evidence.length ? evidence.map((item) => `<article id="${evidenceId(plan, item.clause_id)}" class="evidence-card" data-clause-card="${escapeHtml(item.clause_id)}">
     <header><div><span class="source-dot"></span><strong>${escapeHtml(state.payload.plans[plan].carrier)} brochure</strong></div><span>PAGE ${item.page_number}</span></header>
     <blockquote>“${escapeHtml(item.quoted_text)}”</blockquote>
-    <footer><code>${escapeHtml(item.clause_id)}</code><button class="copy-button" data-copy="${escapeHtml(item.quoted_text)}" aria-label="Copy quoted clause">Copy</button></footer>
+    <footer><a class="original-pdf" href="${brochureUrls[plan]}" target="_blank" rel="noopener noreferrer" aria-label="Open original ${escapeHtml(state.payload.plans[plan].carrier)} brochure PDF in a new tab">Original PDF ↗</a><button class="copy-button" data-copy="${escapeHtml(item.quoted_text)}" aria-label="Copy quoted clause">Copy</button></footer>
   </article>`).join('') : '<div class="evidence-empty"><strong>No brochure sentence is being claimed here.</strong><p>This line uses a declared benchmark assumption or is waiting for a required evidence class.</p></div>';
   $$('.copy-button').forEach((button) => button.addEventListener('click', async () => {
     try {
@@ -254,6 +298,7 @@ async function boot() {
   picker.value = list.cases.find((item) => item.demo_lead)?.case_id || list.cases[0].case_id;
   picker.addEventListener('change', () => loadCase(picker.value));
   await loadCase(picker.value);
+  initOverview();
 }
 
 boot().catch((error) => {
