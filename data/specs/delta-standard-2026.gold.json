@@ -1,0 +1,2191 @@
+{
+  "gold_spec_artifact_version": 2,
+  "reference_status": "draft_human_audited",
+  "authored_at": "2026-08-16",
+  "case_boundary": {
+    "option": "Standard",
+    "coverage_tier": "self_only",
+    "service_classes": [
+      "A",
+      "B",
+      "C"
+    ],
+    "frequency_codes": [
+      "D0120",
+      "D0150",
+      "D0180",
+      "D0210",
+      "D0330"
+    ],
+    "alternate_benefit_codes": [
+      "D2952",
+      "D2954"
+    ],
+    "notice": "This is a case-bounded reference spec for the preregistered MVP, not a complete representation of the plan or a production payment policy."
+  },
+  "spec": {
+    "spec_id": "delta-standard-2026-gold-v3",
+    "carrier": "Delta Dental",
+    "plan_name": "Delta Dental's Federal Employees Dental Program",
+    "option": "Standard Option",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "document_set": {
+      "documents": [
+        {
+          "document_id": "fedvip-2026-delta-standard-02AP-05",
+          "kind": "plan_brochure",
+          "source_url": "https://www.opm.gov/healthcare-insurance/healthcare/plan-information/plans/pdf/2026/brochures/02AP-05.pdf",
+          "sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "canonicalization_version": "pymupdf-sorted-text-nfc-v1"
+        }
+      ]
+    },
+    "rules": [
+      {
+        "kind": "eligibility",
+        "rule_id": "delta-eligibility-plan-year-2026",
+        "scope": {},
+        "plan_effective_from": {
+          "state": "derived",
+          "value": "2026-01-01",
+          "evidence": [
+            {
+              "clause_id": "delta-coverage-effective-2026",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 6,
+              "char_start": 1247,
+              "char_end": 1654,
+              "quoted_text": "Coverage Effective Date       If you sign up for a dental and/or vision plan during the 2025 Open Season, your coverage\n                                  will begin on January 1, 2026. Premium deductions will start with the first full pay period\n                             beginning on/after January 1, 2026. You may use your benefits as soon as your\n                              enrollment is confirmed.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "January 1, 2026"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the stated effective date to ISO-8601",
+          "review_status": "approved"
+        },
+        "plan_effective_to": {
+          "state": "derived",
+          "value": "2026-12-31",
+          "evidence": [
+            {
+              "clause_id": "delta-calendar-year-2026",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 17,
+              "char_start": 3983,
+              "char_end": 4139,
+              "quoted_text": "Calendar Year            The calendar year refers to the plan year, which is defined as January 1, 2026 to December\n                               31, 2026.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "31, 2026"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the stated plan-year end to ISO-8601",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "deductible",
+        "rule_id": "delta-deductible-class-a-zero",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "A"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-deductible-table",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 123,
+                "char_end": 1614,
+                "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n\n\n",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class A"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network",
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-deductible-table",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 123,
+                "char_end": 1614,
+                "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n\n\n",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network",
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "pool_id": {
+          "state": "assumed",
+          "value": "deductible:standard:class-a-zero",
+          "assumption_id": "delta-zero-deductible-pool-class-a-v1",
+          "rationale": "A zero-dollar rule cannot consume an accumulator; the stable pool name is implementation identity only."
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 0,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-deductible-table",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 16,
+              "char_start": 123,
+              "char_end": 1614,
+              "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n\n\n",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Standard Option: $0"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "convert the stated dollar amount to integer cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "assumed",
+          "value": "individual",
+          "assumption_id": "delta-zero-deductible-individual-v1",
+          "rationale": "The MVP accepts only self-only claims, and the zero amount makes coverage aggregation non-material."
+        }
+      },
+      {
+        "kind": "deductible",
+        "rule_id": "delta-deductible-class-bc-in-network-zero",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "B",
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-deductible-table",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 123,
+                "char_end": 1614,
+                "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n\n\n",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class B",
+              "Class C"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-deductible-table",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 123,
+                "char_end": 1614,
+                "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n\n\n",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "pool_id": {
+          "state": "assumed",
+          "value": "deductible:standard:bc-in-network-zero",
+          "assumption_id": "delta-zero-deductible-pool-bc-v1",
+          "rationale": "A zero-dollar rule cannot consume an accumulator; the stable pool name is implementation identity only."
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 0,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-deductible-table",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 16,
+              "char_start": 123,
+              "char_end": 1614,
+              "quoted_text": "Deductible           A deductible is a fixed amount of expenses you must incur for certain covered services\n                           and supplies before we will pay for covered services. There is no family deductible limit.\n                           Covered charges credited to the deductible are also counted towards the Plan maximum\n                           and limitations.\n\n\n\n                             Class A\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n                             Class B\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                             Class C\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $50\n                            Out-of-Network Standard Option: $75\n\n                            Orthodontics\n                            In-Network High Option: $0\n                            In-Network Standard Option: $0\n                            Out-of-Network High Option: $0\n                            Out-of-Network Standard Option: $0\n\n\n\n",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Standard Option: $0"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "convert the stated dollar amount to integer cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "assumed",
+          "value": "individual",
+          "assumption_id": "delta-zero-deductible-individual-v1",
+          "rationale": "The MVP accepts only self-only claims, and the zero amount makes coverage aggregation non-material."
+        }
+      },
+      {
+        "kind": "deductible",
+        "rule_id": "delta-deductible-class-b-out-of-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "B"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-class-b-deductible-per-person",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 22,
+                "char_start": 30,
+                "char_end": 968,
+                "quoted_text": "Class B Intermediate\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for minor restorative care or treatment of a covered\n             condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n            provided by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per year for the Standard\n             Option. Each enrolled covered person must satisfy his/her own deductible; there is no family\n             deductible in either option.",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class B"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-class-b-deductible-per-person",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 22,
+                "char_start": 30,
+                "char_end": 968,
+                "quoted_text": "Class B Intermediate\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for minor restorative care or treatment of a covered\n             condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n            provided by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per year for the Standard\n             Option. Each enrolled covered person must satisfy his/her own deductible; there is no family\n             deductible in either option.",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "pool_id": {
+          "state": "ambiguous",
+          "candidate_values": [
+            "deductible:standard:out-of-network:bc-combined",
+            "deductible:standard:out-of-network:class-b"
+          ],
+          "evidence": [
+            {
+              "clause_id": "delta-standard-class-b-deductible-per-person",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 22,
+              "char_start": 30,
+              "char_end": 968,
+              "quoted_text": "Class B Intermediate\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for minor restorative care or treatment of a covered\n             condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n            provided by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per year for the Standard\n             Option. Each enrolled covered person must satisfy his/her own deductible; there is no family\n             deductible in either option.",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-standard-class-c-deductible-per-person",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 27,
+              "char_start": 33,
+              "char_end": 981,
+              "quoted_text": "Class C Major\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for the prevention, diagnosis, care or treatment of a\n            covered condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n             rendered by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per calendar year for the\n            Standard Option. Each enrolled covered person must satisfy his/her own deductible; there is no\n             family deductible in either option.",
+              "rectangles": []
+            }
+          ],
+          "reason": "The brochure states one per-person Class B deductible and repeats the same amount for Class C, but does not explicitly say whether B and C share one calendar-year balance."
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 7500,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-class-b-deductible-per-person",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 22,
+              "char_start": 30,
+              "char_end": 968,
+              "quoted_text": "Class B Intermediate\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for minor restorative care or treatment of a covered\n             condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n            provided by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per year for the Standard\n             Option. Each enrolled covered person must satisfy his/her own deductible; there is no family\n             deductible in either option.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "$75.00 deductible per person per year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "75 dollars * 100 cents per dollar = 7500 cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "sourced",
+          "value": "individual",
+          "evidence": [
+            {
+              "clause_id": "delta-standard-class-b-deductible-per-person",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 22,
+              "char_start": 30,
+              "char_end": 968,
+              "quoted_text": "Class B Intermediate\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for minor restorative care or treatment of a covered\n             condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n            provided by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per year for the Standard\n             Option. Each enrolled covered person must satisfy his/her own deductible; there is no family\n             deductible in either option.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "per person"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        }
+      },
+      {
+        "kind": "deductible",
+        "rule_id": "delta-deductible-class-c-out-of-network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-class-c-deductible-per-person",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 27,
+                "char_start": 33,
+                "char_end": 981,
+                "quoted_text": "Class C Major\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for the prevention, diagnosis, care or treatment of a\n            covered condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n             rendered by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per calendar year for the\n            Standard Option. Each enrolled covered person must satisfy his/her own deductible; there is no\n             family deductible in either option.",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class C"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-class-c-deductible-per-person",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 27,
+                "char_start": 33,
+                "char_end": 981,
+                "quoted_text": "Class C Major\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for the prevention, diagnosis, care or treatment of a\n            covered condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n             rendered by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per calendar year for the\n            Standard Option. Each enrolled covered person must satisfy his/her own deductible; there is no\n             family deductible in either option.",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "pool_id": {
+          "state": "ambiguous",
+          "candidate_values": [
+            "deductible:standard:out-of-network:bc-combined",
+            "deductible:standard:out-of-network:class-c"
+          ],
+          "evidence": [
+            {
+              "clause_id": "delta-standard-class-b-deductible-per-person",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 22,
+              "char_start": 30,
+              "char_end": 968,
+              "quoted_text": "Class B Intermediate\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for minor restorative care or treatment of a covered\n             condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n            provided by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per year for the Standard\n             Option. Each enrolled covered person must satisfy his/her own deductible; there is no family\n             deductible in either option.",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-standard-class-c-deductible-per-person",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 27,
+              "char_start": 33,
+              "char_end": 981,
+              "quoted_text": "Class C Major\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for the prevention, diagnosis, care or treatment of a\n            covered condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n             rendered by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per calendar year for the\n            Standard Option. Each enrolled covered person must satisfy his/her own deductible; there is no\n             family deductible in either option.",
+              "rectangles": []
+            }
+          ],
+          "reason": "The brochure states one per-person Class C deductible and repeats the same amount for Class B, but does not explicitly say whether B and C share one calendar-year balance."
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 7500,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-class-c-deductible-per-person",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 27,
+              "char_start": 33,
+              "char_end": 981,
+              "quoted_text": "Class C Major\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for the prevention, diagnosis, care or treatment of a\n            covered condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n             rendered by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per calendar year for the\n            Standard Option. Each enrolled covered person must satisfy his/her own deductible; there is no\n             family deductible in either option.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "$75.00 deductible per person per calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "75 dollars * 100 cents per dollar = 7500 cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "sourced",
+          "value": "individual",
+          "evidence": [
+            {
+              "clause_id": "delta-standard-class-c-deductible-per-person",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 27,
+              "char_start": 33,
+              "char_end": 981,
+              "quoted_text": "Class C Major\n\n\n         Important things you should keep in mind about these benefits:\n\n           • All benefits are subject to the definitions, limitations and exclusions in this plan brochure and are\n            payable only when determined to be necessary for the prevention, diagnosis, care or treatment of a\n            covered condition and if they are determined to meet generally accepted dental protocols.\n\n           • The calendar year deductible is $0 under both the High and Standard options when services are\n             rendered by an in-network provider.\n\n           •  If an out-of-network provider renders the services, there is a $50.00 deductible per person per\n             calendar year for the High Option and a $75.00 deductible per person per calendar year for the\n            Standard Option. Each enrolled covered person must satisfy his/her own deductible; there is no\n             family deductible in either option.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "per person"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "delta-coinsurance-a-in_network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "A"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class A"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 10000,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 16,
+              "char_start": 1615,
+              "char_end": 2657,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Standard Option: 0%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 - sourced member_share_basis_points(0) = 10000",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "delta-coinsurance-a-out_of_network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "A"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class A"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 6000,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 16,
+              "char_start": 1615,
+              "char_end": 2657,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Standard Option: 40%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 - sourced member_share_basis_points(4000) = 6000",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "delta-coinsurance-b-in_network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "B"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class B"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 5500,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 16,
+              "char_start": 1615,
+              "char_end": 2657,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Standard Option: 45%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 - sourced member_share_basis_points(4500) = 5500",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "delta-coinsurance-b-out_of_network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "B"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class B"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 4000,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 16,
+              "char_start": 1615,
+              "char_end": 2657,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Standard Option: 60%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 - sourced member_share_basis_points(6000) = 4000",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "delta-coinsurance-c-in_network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class C"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 3500,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 16,
+              "char_start": 1615,
+              "char_end": 2657,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Standard Option: 65%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 - sourced member_share_basis_points(6500) = 3500",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "coinsurance",
+        "rule_id": "delta-coinsurance-c-out_of_network",
+        "scope": {
+          "service_classes": {
+            "state": "sourced",
+            "value": [
+              "C"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Class C"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-coinsurance-abc",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 16,
+                "char_start": 1615,
+                "char_end": 2657,
+                "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "plan_share_basis_points": {
+          "state": "derived",
+          "value": 2000,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-coinsurance-abc",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 16,
+              "char_start": 1615,
+              "char_end": 2657,
+              "quoted_text": "Coinsurance                Coinsurance is the percentage of our allowance that you must pay for your care.\n                             Coinsurance does not begin until you meet your deductible, if applicable.\n\n\n                             Class A\n                            In-Network High Option: 0%\n                            In-Network Standard Option: 0%\n                            Out-of-Network High Option: 10%\n                            Out-of-Network Standard Option: 40%\n\n                             Class B\n                            In-Network High Option: 30%\n                            In-Network Standard Option: 45%\n                            Out-of-Network High Option: 40%\n                            Out-of-Network Standard Option: 60%\n\n                             Class C\n                            In-Network High Option: 50%\n                            In-Network Standard Option: 65%\n                            Out-of-Network High Option: 60%\n                            Out-of-Network Standard Option: 80%",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Standard Option: 80%"
+          ],
+          "derivation_kind": "arithmetic",
+          "expression": "10000 - sourced member_share_basis_points(8000) = 2000",
+          "review_status": "approved"
+        }
+      },
+      {
+        "kind": "annual_maximum",
+        "rule_id": "delta-annual-maximum-in_network",
+        "scope": {
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "in_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-annual-maximum-combined",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 17,
+                "char_start": 285,
+                "char_end": 970,
+                "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between in and out of network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                      Maximum Annual Benefit.\n\n                     Maximum Annual Benefits:\n\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $1,500\n                            Out-of-Network High Option: $3,000\n                            Out-of-Network Standard Option: $1000",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "In-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "service_classes": {
+            "state": "assumed",
+            "value": [
+              "A",
+              "B",
+              "C"
+            ],
+            "assumption_id": "delta-annual-maximum-case-bound-scope-v1",
+            "rationale": "The MVP case boundary applies the non-orthodontic annual maximum only to selected Classes A, B, and C; orthodontic lifetime maximums are outside scope."
+          }
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "maximum:standard:combined-network",
+          "evidence": [
+            {
+              "clause_id": "delta-standard-annual-maximum-combined",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 17,
+              "char_start": 285,
+              "char_end": 970,
+              "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between in and out of network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                      Maximum Annual Benefit.\n\n                     Maximum Annual Benefits:\n\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $1,500\n                            Out-of-Network High Option: $3,000\n                            Out-of-Network Standard Option: $1000",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "combined between in and out of network services"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the stated combined network relationship to a stable pool identifier",
+          "review_status": "approved"
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 150000,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-annual-maximum-combined",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 17,
+              "char_start": 285,
+              "char_end": 970,
+              "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between in and out of network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                      Maximum Annual Benefit.\n\n                     Maximum Annual Benefits:\n\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $1,500\n                            Out-of-Network High Option: $3,000\n                            Out-of-Network Standard Option: $1000",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "In-Network Standard Option: $1,500"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "convert the stated dollar maximum to integer cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "sourced",
+          "value": "individual",
+          "evidence": [
+            {
+              "clause_id": "delta-standard-annual-maximum-combined",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 17,
+              "char_start": 285,
+              "char_end": 970,
+              "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between in and out of network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                      Maximum Annual Benefit.\n\n                     Maximum Annual Benefits:\n\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $1,500\n                            Out-of-Network High Option: $3,000\n                            Out-of-Network Standard Option: $1000",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Once you reach this amount"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        }
+      },
+      {
+        "kind": "annual_maximum",
+        "rule_id": "delta-annual-maximum-out_of_network",
+        "scope": {
+          "network_states": {
+            "state": "sourced",
+            "value": [
+              "out_of_network"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-standard-annual-maximum-combined",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 17,
+                "char_start": 285,
+                "char_end": 970,
+                "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between in and out of network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                      Maximum Annual Benefit.\n\n                     Maximum Annual Benefits:\n\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $1,500\n                            Out-of-Network High Option: $3,000\n                            Out-of-Network Standard Option: $1000",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "Out-of-Network"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          },
+          "service_classes": {
+            "state": "assumed",
+            "value": [
+              "A",
+              "B",
+              "C"
+            ],
+            "assumption_id": "delta-annual-maximum-case-bound-scope-v1",
+            "rationale": "The MVP case boundary applies the non-orthodontic annual maximum only to selected Classes A, B, and C; orthodontic lifetime maximums are outside scope."
+          }
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "maximum:standard:combined-network",
+          "evidence": [
+            {
+              "clause_id": "delta-standard-annual-maximum-combined",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 17,
+              "char_start": 285,
+              "char_end": 970,
+              "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between in and out of network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                      Maximum Annual Benefit.\n\n                     Maximum Annual Benefits:\n\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $1,500\n                            Out-of-Network High Option: $3,000\n                            Out-of-Network Standard Option: $1000",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "combined between in and out of network services"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the stated combined network relationship to a stable pool identifier",
+          "review_status": "approved"
+        },
+        "amount_cents": {
+          "state": "derived",
+          "value": 100000,
+          "evidence": [
+            {
+              "clause_id": "delta-standard-annual-maximum-combined",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 17,
+              "char_start": 285,
+              "char_end": 970,
+              "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between in and out of network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                      Maximum Annual Benefit.\n\n                     Maximum Annual Benefits:\n\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $1,500\n                            Out-of-Network High Option: $3,000\n                            Out-of-Network Standard Option: $1000",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "Out-of-Network Standard Option: $1000"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "convert the stated dollar maximum to integer cents",
+          "review_status": "approved"
+        },
+        "coverage_level": {
+          "state": "sourced",
+          "value": "individual",
+          "evidence": [
+            {
+              "clause_id": "delta-standard-annual-maximum-combined",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 17,
+              "char_start": 285,
+              "char_end": 970,
+              "quoted_text": "Annual Benefit            Once you reach this amount, you are responsible for all additional charges. The Annual\n Maximum                   Benefit Maximums within each option are combined between in and out of network\n                                  services. The total Annual Benefit Maximum will never be greater than the In-Network\n                      Maximum Annual Benefit.\n\n                     Maximum Annual Benefits:\n\n                            In-Network High Option: Unlimited\n                            In-Network Standard Option: $1,500\n                            Out-of-Network High Option: $3,000\n                            Out-of-Network Standard Option: $1000",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Once you reach this amount"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        }
+      },
+      {
+        "kind": "frequency",
+        "rule_id": "delta-frequency-examinations-combined",
+        "scope": {
+          "codes": {
+            "state": "derived",
+            "value": [
+              "D0120",
+              "D0150",
+              "D0180"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-d0120-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 19,
+                "char_start": 2334,
+                "char_end": 2422,
+                "quoted_text": "D0120 Periodic oral evaluation – established patient - Limited to two in a calendar year",
+                "rectangles": []
+              },
+              {
+                "clause_id": "delta-d0150-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 19,
+                "char_start": 2641,
+                "char_end": 2741,
+                "quoted_text": "D0150 Comprehensive oral evaluation – new or established patient - Limited to one in a calendar year",
+                "rectangles": []
+              },
+              {
+                "clause_id": "delta-d0180-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 19,
+                "char_start": 2820,
+                "char_end": 2927,
+                "quoted_text": "D0180 Comprehensive periodontal evaluation – new or established patient - Limited to one in a calendar year",
+                "rectangles": []
+              },
+              {
+                "clause_id": "delta-examination-group-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 20,
+                "char_start": 816,
+                "char_end": 1019,
+                "quoted_text": "2. Examinations/evaluations by specialists are payable as comprehensive or periodic examinations/evaluations and are\n    counted towards the two-in-a-calendar-year limitation on examinations/evaluations.",
+                "rectangles": []
+              }
+            ],
+            "source_fragments": [
+              "D0120 Periodic oral evaluation",
+              "D0150 Comprehensive oral evaluation",
+              "D0180 Comprehensive periodontal evaluation",
+              "examinations/evaluations"
+            ],
+            "derivation_kind": "cross_clause_link",
+            "expression": "candidate reading A links the selected periodic and comprehensive evaluation codes to the brochure's two-examinations limitation",
+            "review_status": "approved"
+          }
+        },
+        "applicability": {
+          "state": "ambiguous",
+          "candidate_values": [
+            true,
+            false
+          ],
+          "evidence": [
+            {
+              "clause_id": "delta-d0120-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2334,
+              "char_end": 2422,
+              "quoted_text": "D0120 Periodic oral evaluation – established patient - Limited to two in a calendar year",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-d0150-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2641,
+              "char_end": 2741,
+              "quoted_text": "D0150 Comprehensive oral evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-d0180-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2820,
+              "char_end": 2927,
+              "quoted_text": "D0180 Comprehensive periodontal evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-examination-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 816,
+              "char_end": 1019,
+              "quoted_text": "2. Examinations/evaluations by specialists are payable as comprehensive or periodic examinations/evaluations and are\n    counted towards the two-in-a-calendar-year limitation on examinations/evaluations.",
+              "rectangles": []
+            }
+          ],
+          "reason": "Reading A treats the selected examination codes as one combined two-per-year group; reading B keeps the explicit per-code limits independent and reads the specialist note only as preventing extra specialist headroom."
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "frequency:examinations:combined:calendar-year",
+          "evidence": [
+            {
+              "clause_id": "delta-examination-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 816,
+              "char_end": 1019,
+              "quoted_text": "2. Examinations/evaluations by specialists are payable as comprehensive or periodic examinations/evaluations and are\n    counted towards the two-in-a-calendar-year limitation on examinations/evaluations.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "two-in-a-calendar-year limitation on examinations/evaluations"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize candidate reading A to a stable group-pool identifier",
+          "review_status": "approved"
+        },
+        "quantity": {
+          "state": "sourced",
+          "value": 2,
+          "evidence": [
+            {
+              "clause_id": "delta-examination-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 816,
+              "char_end": 1019,
+              "quoted_text": "2. Examinations/evaluations by specialists are payable as comprehensive or periodic examinations/evaluations and are\n    counted towards the two-in-a-calendar-year limitation on examinations/evaluations.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "two-in-a-calendar-year limitation"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "basis": {
+          "state": "derived",
+          "value": "benefit_year",
+          "evidence": [
+            {
+              "clause_id": "delta-examination-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 816,
+              "char_end": 1019,
+              "quoted_text": "2. Examinations/evaluations by specialists are payable as comprehensive or periodic examinations/evaluations and are\n    counted towards the two-in-a-calendar-year limitation on examinations/evaluations.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "calendar-year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "map the stated calendar-year basis to FrequencyBasis.BENEFIT_YEAR",
+          "review_status": "approved"
+        },
+        "period_months": {
+          "state": "derived",
+          "value": null,
+          "evidence": [
+            {
+              "clause_id": "delta-examination-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 816,
+              "char_end": 1019,
+              "quoted_text": "2. Examinations/evaluations by specialists are payable as comprehensive or periodic examinations/evaluations and are\n    counted towards the two-in-a-calendar-year limitation on examinations/evaluations.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "calendar-year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "period_months = null because the stated basis is the calendar benefit year",
+          "review_status": "approved"
+        },
+        "unit": {
+          "state": "assumed",
+          "value": "member",
+          "assumption_id": "delta-frequency-unit-member-v1",
+          "rationale": "The case-bounded MVP treats these person-level procedure limits as member counts."
+        }
+      },
+      {
+        "kind": "frequency",
+        "rule_id": "delta-frequency-d0120-individual",
+        "scope": {
+          "codes": {
+            "state": "sourced",
+            "value": [
+              "D0120"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-d0120-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 19,
+                "char_start": 2334,
+                "char_end": 2422,
+                "quoted_text": "D0120 Periodic oral evaluation – established patient - Limited to two in a calendar year",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "D0120"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "applicability": {
+          "state": "sourced",
+          "value": true,
+          "evidence": [
+            {
+              "clause_id": "delta-d0120-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2334,
+              "char_end": 2422,
+              "quoted_text": "D0120 Periodic oral evaluation – established patient - Limited to two in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Limited to two in a calendar year"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "frequency:D0120:calendar-year",
+          "evidence": [
+            {
+              "clause_id": "delta-d0120-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2334,
+              "char_end": 2422,
+              "quoted_text": "D0120 Periodic oral evaluation – established patient - Limited to two in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "D0120",
+            "Limited to two in a calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the explicit D0120 calendar-year limit to a stable per-code pool identifier",
+          "review_status": "approved"
+        },
+        "quantity": {
+          "state": "sourced",
+          "value": 2,
+          "evidence": [
+            {
+              "clause_id": "delta-d0120-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2334,
+              "char_end": 2422,
+              "quoted_text": "D0120 Periodic oral evaluation – established patient - Limited to two in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Limited to two in a calendar year"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "basis": {
+          "state": "derived",
+          "value": "benefit_year",
+          "evidence": [
+            {
+              "clause_id": "delta-d0120-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2334,
+              "char_end": 2422,
+              "quoted_text": "D0120 Periodic oral evaluation – established patient - Limited to two in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "map calendar year to FrequencyBasis.BENEFIT_YEAR",
+          "review_status": "approved"
+        },
+        "period_months": {
+          "state": "derived",
+          "value": null,
+          "evidence": [
+            {
+              "clause_id": "delta-d0120-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2334,
+              "char_end": 2422,
+              "quoted_text": "D0120 Periodic oral evaluation – established patient - Limited to two in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "period_months = null because the stated basis is the calendar benefit year",
+          "review_status": "approved"
+        },
+        "unit": {
+          "state": "assumed",
+          "value": "member",
+          "assumption_id": "delta-frequency-unit-member-v1",
+          "rationale": "The case-bounded MVP treats these person-level procedure limits as member counts."
+        }
+      },
+      {
+        "kind": "frequency",
+        "rule_id": "delta-frequency-d0150-individual",
+        "scope": {
+          "codes": {
+            "state": "sourced",
+            "value": [
+              "D0150"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-d0150-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 19,
+                "char_start": 2641,
+                "char_end": 2741,
+                "quoted_text": "D0150 Comprehensive oral evaluation – new or established patient - Limited to one in a calendar year",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "D0150"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "applicability": {
+          "state": "sourced",
+          "value": true,
+          "evidence": [
+            {
+              "clause_id": "delta-d0150-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2641,
+              "char_end": 2741,
+              "quoted_text": "D0150 Comprehensive oral evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Limited to one in a calendar year"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "frequency:D0150:calendar-year",
+          "evidence": [
+            {
+              "clause_id": "delta-d0150-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2641,
+              "char_end": 2741,
+              "quoted_text": "D0150 Comprehensive oral evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "D0150",
+            "Limited to one in a calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the explicit D0150 calendar-year limit to a stable per-code pool identifier",
+          "review_status": "approved"
+        },
+        "quantity": {
+          "state": "sourced",
+          "value": 1,
+          "evidence": [
+            {
+              "clause_id": "delta-d0150-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2641,
+              "char_end": 2741,
+              "quoted_text": "D0150 Comprehensive oral evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Limited to one in a calendar year"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "basis": {
+          "state": "derived",
+          "value": "benefit_year",
+          "evidence": [
+            {
+              "clause_id": "delta-d0150-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2641,
+              "char_end": 2741,
+              "quoted_text": "D0150 Comprehensive oral evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "map calendar year to FrequencyBasis.BENEFIT_YEAR",
+          "review_status": "approved"
+        },
+        "period_months": {
+          "state": "derived",
+          "value": null,
+          "evidence": [
+            {
+              "clause_id": "delta-d0150-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2641,
+              "char_end": 2741,
+              "quoted_text": "D0150 Comprehensive oral evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "period_months = null because the stated basis is the calendar benefit year",
+          "review_status": "approved"
+        },
+        "unit": {
+          "state": "assumed",
+          "value": "member",
+          "assumption_id": "delta-frequency-unit-member-v1",
+          "rationale": "The case-bounded MVP treats these person-level procedure limits as member counts."
+        }
+      },
+      {
+        "kind": "frequency",
+        "rule_id": "delta-frequency-d0180-individual",
+        "scope": {
+          "codes": {
+            "state": "sourced",
+            "value": [
+              "D0180"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-d0180-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 19,
+                "char_start": 2820,
+                "char_end": 2927,
+                "quoted_text": "D0180 Comprehensive periodontal evaluation – new or established patient - Limited to one in a calendar year",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "D0180"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "applicability": {
+          "state": "sourced",
+          "value": true,
+          "evidence": [
+            {
+              "clause_id": "delta-d0180-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2820,
+              "char_end": 2927,
+              "quoted_text": "D0180 Comprehensive periodontal evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Limited to one in a calendar year"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "frequency:D0180:calendar-year",
+          "evidence": [
+            {
+              "clause_id": "delta-d0180-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2820,
+              "char_end": 2927,
+              "quoted_text": "D0180 Comprehensive periodontal evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "D0180",
+            "Limited to one in a calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the explicit D0180 calendar-year limit to a stable per-code pool identifier",
+          "review_status": "approved"
+        },
+        "quantity": {
+          "state": "sourced",
+          "value": 1,
+          "evidence": [
+            {
+              "clause_id": "delta-d0180-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2820,
+              "char_end": 2927,
+              "quoted_text": "D0180 Comprehensive periodontal evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Limited to one in a calendar year"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "basis": {
+          "state": "derived",
+          "value": "benefit_year",
+          "evidence": [
+            {
+              "clause_id": "delta-d0180-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2820,
+              "char_end": 2927,
+              "quoted_text": "D0180 Comprehensive periodontal evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "map calendar year to FrequencyBasis.BENEFIT_YEAR",
+          "review_status": "approved"
+        },
+        "period_months": {
+          "state": "derived",
+          "value": null,
+          "evidence": [
+            {
+              "clause_id": "delta-d0180-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2820,
+              "char_end": 2927,
+              "quoted_text": "D0180 Comprehensive periodontal evaluation – new or established patient - Limited to one in a calendar year",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "calendar year"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "period_months = null because the stated basis is the calendar benefit year",
+          "review_status": "approved"
+        },
+        "unit": {
+          "state": "assumed",
+          "value": "member",
+          "assumption_id": "delta-frequency-unit-member-v1",
+          "rationale": "The case-bounded MVP treats these person-level procedure limits as member counts."
+        }
+      },
+      {
+        "kind": "frequency",
+        "rule_id": "delta-frequency-comprehensive-panoramic-combined",
+        "scope": {
+          "codes": {
+            "state": "sourced",
+            "value": [
+              "D0210",
+              "D0330"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-d0210-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 19,
+                "char_start": 2930,
+                "char_end": 3024,
+                "quoted_text": "D0210 Intraoral – comprehensive series of radiographic images – Limited to one every 48 months",
+                "rectangles": []
+              },
+              {
+                "clause_id": "delta-d0330-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 20,
+                "char_start": 157,
+                "char_end": 224,
+                "quoted_text": "D0330 Panoramic radiographic image – Limited to one every 48 months",
+                "rectangles": []
+              },
+              {
+                "clause_id": "delta-radiograph-group-frequency",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 20,
+                "char_start": 1574,
+                "char_end": 1754,
+                "quoted_text": "6. Payment is limited to either a D0210 Intraoral – comprehensive series of radiographic images or a D0330 Panoramic\n     radiographic image within the frequency limitation period.",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "D0210",
+              "D0330"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "applicability": {
+          "state": "sourced",
+          "value": true,
+          "evidence": [
+            {
+              "clause_id": "delta-radiograph-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 1574,
+              "char_end": 1754,
+              "quoted_text": "6. Payment is limited to either a D0210 Intraoral – comprehensive series of radiographic images or a D0330 Panoramic\n     radiographic image within the frequency limitation period.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "Payment is limited to either a D0210",
+            "or a D0330"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "pool_id": {
+          "state": "derived",
+          "value": "frequency:comprehensive-panoramic:combined:48-months",
+          "evidence": [
+            {
+              "clause_id": "delta-radiograph-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 1574,
+              "char_end": 1754,
+              "quoted_text": "6. Payment is limited to either a D0210 Intraoral – comprehensive series of radiographic images or a D0330 Panoramic\n     radiographic image within the frequency limitation period.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "limited to either a D0210",
+            "or a D0330"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "normalize the explicit either/or relationship to one shared pool identifier",
+          "review_status": "approved"
+        },
+        "quantity": {
+          "state": "sourced",
+          "value": 1,
+          "evidence": [
+            {
+              "clause_id": "delta-radiograph-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 1574,
+              "char_end": 1754,
+              "quoted_text": "6. Payment is limited to either a D0210 Intraoral – comprehensive series of radiographic images or a D0330 Panoramic\n     radiographic image within the frequency limitation period.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "limited to either a D0210"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "basis": {
+          "state": "derived",
+          "value": "rolling_months",
+          "evidence": [
+            {
+              "clause_id": "delta-d0210-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2930,
+              "char_end": 3024,
+              "quoted_text": "D0210 Intraoral – comprehensive series of radiographic images – Limited to one every 48 months",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-d0330-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 157,
+              "char_end": 224,
+              "quoted_text": "D0330 Panoramic radiographic image – Limited to one every 48 months",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-radiograph-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 1574,
+              "char_end": 1754,
+              "quoted_text": "6. Payment is limited to either a D0210 Intraoral – comprehensive series of radiographic images or a D0330 Panoramic\n     radiographic image within the frequency limitation period.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "every 48 months"
+          ],
+          "derivation_kind": "normalization",
+          "expression": "map the stated moving 48-month period to FrequencyBasis.ROLLING_MONTHS",
+          "review_status": "approved"
+        },
+        "period_months": {
+          "state": "sourced",
+          "value": 48,
+          "evidence": [
+            {
+              "clause_id": "delta-d0210-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 19,
+              "char_start": 2930,
+              "char_end": 3024,
+              "quoted_text": "D0210 Intraoral – comprehensive series of radiographic images – Limited to one every 48 months",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-d0330-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 157,
+              "char_end": 224,
+              "quoted_text": "D0330 Panoramic radiographic image – Limited to one every 48 months",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-radiograph-group-frequency",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 20,
+              "char_start": 1574,
+              "char_end": 1754,
+              "quoted_text": "6. Payment is limited to either a D0210 Intraoral – comprehensive series of radiographic images or a D0330 Panoramic\n     radiographic image within the frequency limitation period.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "48 months"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "unit": {
+          "state": "assumed",
+          "value": "member",
+          "assumption_id": "delta-frequency-unit-member-v1",
+          "rationale": "The case-bounded MVP treats these person-level procedure limits as member counts."
+        }
+      },
+      {
+        "kind": "alternate_benefit",
+        "rule_id": "delta-alternate-d2952-to-d2954",
+        "scope": {
+          "codes": {
+            "state": "sourced",
+            "value": [
+              "D2952"
+            ],
+            "evidence": [
+              {
+                "clause_id": "delta-d2952-alternate-benefit",
+                "document_id": "fedvip-2026-delta-standard-02AP-05",
+                "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+                "page_number": 29,
+                "char_start": 1209,
+                "char_end": 1557,
+                "quoted_text": "6. Cast posts and cores (D2952 Post and core in addition to crown, indirectly fabricated) are processed as an alternate\n     benefit of a prefabricated post and core. The patient is responsible for the difference between the dentist's charge for the\n     cast post and core and the amount paid by the contractor for the prefabricated post and core.",
+                "rectangles": []
+              }
+            ],
+            "supporting_fragments": [
+              "D2952"
+            ],
+            "review_status": "approved",
+            "extraction_confidence_milli": null
+          }
+        },
+        "applicability": {
+          "state": "sourced",
+          "value": true,
+          "evidence": [
+            {
+              "clause_id": "delta-d2952-alternate-benefit",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 29,
+              "char_start": 1209,
+              "char_end": 1557,
+              "quoted_text": "6. Cast posts and cores (D2952 Post and core in addition to crown, indirectly fabricated) are processed as an alternate\n     benefit of a prefabricated post and core. The patient is responsible for the difference between the dentist's charge for the\n     cast post and core and the amount paid by the contractor for the prefabricated post and core.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "are processed as an alternate benefit"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "benefited_code": {
+          "state": "derived",
+          "value": "D2954",
+          "evidence": [
+            {
+              "clause_id": "delta-d2954-covered-code",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 28,
+              "char_start": 1102,
+              "char_end": 1156,
+              "quoted_text": "D2954 Prefabricated post and core in addition to crown",
+              "rectangles": []
+            },
+            {
+              "clause_id": "delta-d2952-alternate-benefit",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 29,
+              "char_start": 1209,
+              "char_end": 1557,
+              "quoted_text": "6. Cast posts and cores (D2952 Post and core in addition to crown, indirectly fabricated) are processed as an alternate\n     benefit of a prefabricated post and core. The patient is responsible for the difference between the dentist's charge for the\n     cast post and core and the amount paid by the contractor for the prefabricated post and core.",
+              "rectangles": []
+            }
+          ],
+          "source_fragments": [
+            "D2954 Prefabricated post and core",
+            "alternate benefit of a prefabricated post and core"
+          ],
+          "derivation_kind": "cross_clause_link",
+          "expression": "link the alternate service named in the D2952 limitation to the brochure's explicit D2954 covered-code listing",
+          "review_status": "approved"
+        },
+        "difference_treatment": {
+          "state": "sourced",
+          "value": "submitted_charge_minus_plan_payment",
+          "evidence": [
+            {
+              "clause_id": "delta-d2952-alternate-benefit",
+              "document_id": "fedvip-2026-delta-standard-02AP-05",
+              "document_sha256": "c1e856690a4b7d64d65a53b0e346931ea71237c35159a9faf23e5235c5e8fec0",
+              "page_number": 29,
+              "char_start": 1209,
+              "char_end": 1557,
+              "quoted_text": "6. Cast posts and cores (D2952 Post and core in addition to crown, indirectly fabricated) are processed as an alternate\n     benefit of a prefabricated post and core. The patient is responsible for the difference between the dentist's charge for the\n     cast post and core and the amount paid by the contractor for the prefabricated post and core.",
+              "rectangles": []
+            }
+          ],
+          "supporting_fragments": [
+            "The patient is responsible for the difference",
+            "dentist's charge for the cast post and core",
+            "amount paid by the contractor for the prefabricated post and core"
+          ],
+          "review_status": "approved",
+          "extraction_confidence_milli": null
+        },
+        "requires_clinical_review": {
+          "state": "assumed",
+          "value": false,
+          "assumption_id": "delta-explicit-d2952-no-review-default-v1",
+          "rationale": "The explicit D2952 alternate-benefit mapping is modeled without a case-specific review gate for the benchmark; the brochure does not affirmatively state that review is unnecessary.",
+          "unresolved_basis": {
+            "state": "not_stated",
+            "searched_document_ids": [
+              "fedvip-2026-delta-standard-02AP-05"
+            ],
+            "searched_for": "whether the explicit D2952-to-prefabricated-post alternate benefit requires clinical review"
+          }
+        }
+      }
+    ],
+    "rounding_policy": {
+      "state": "assumed",
+      "value": {
+        "mode": "half_up",
+        "increment_cents": 1,
+        "round_after": [
+          "deductible",
+          "coinsurance",
+          "annual_maximum",
+          "final_split"
+        ],
+        "residual_policy": "assign_residual_to_member_cost_share"
+      },
+      "assumption_id": "arbiter-default-rounding-v1",
+      "rationale": "The reviewed brochure does not declare claim-calculation rounding; the benchmark model declares half-up cent rounding at every implemented monetary stage."
+    },
+    "line_ordering_policy": {
+      "state": "assumed",
+      "value": {
+        "keys": [
+          "date_of_service",
+          "source_sequence",
+          "line_id"
+        ]
+      },
+      "assumption_id": "arbiter-canonical-line-order-v1",
+      "rationale": "The brochure does not state same-claim accumulator allocation order; ARBITER declares a deterministic benchmark order."
+    }
+  },
+  "review_findings": [
+    {
+      "finding_id": "delta-frequency-overlap-001",
+      "severity": "material",
+      "summary": "The brochure directly states individual D0120, D0150, and D0180 limits but permits competing readings about whether the selected codes also share one two-examinations pool.",
+      "rule_ids": [
+        "delta-frequency-examinations-combined",
+        "delta-frequency-d0120-individual",
+        "delta-frequency-d0150-individual",
+        "delta-frequency-d0180-individual"
+      ]
+    },
+    {
+      "finding_id": "delta-deductible-pool-ambiguity-001",
+      "severity": "material_at_boundary",
+      "summary": "The brochure does not explicitly resolve whether the repeated Class B and Class C out-of-network deductibles share one balance.",
+      "rule_ids": [
+        "delta-deductible-class-b-out-of-network",
+        "delta-deductible-class-c-out-of-network"
+      ]
+    }
+  ]
+}

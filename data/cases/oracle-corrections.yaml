@@ -1,0 +1,54 @@
+correction_log_version: 1
+frozen_manifest_status: frozen_before_engine_and_baselines
+corrections:
+- correction_id: oracle-correction-001
+  case_id: A06
+  plan: metlife
+  artifact_path: expected.metlife.lines.L2.effects
+  discovered_by: arbiter-core-0.1.0
+  change: Add the completed 20,000-cent benchmark-price effect before the deductible-stage abstention.
+  why: The frozen trace omitted a stage that had to complete to compute both deductible candidate outcomes.
+  deciding_evidence:
+    kind: architecture
+    path: 02-ARCHITECTURE.md
+    section: 7.2 Ordered stages
+    statement: Benchmark price precedes deductible, and completed earlier-stage effects remain in the line trace.
+  monetary_expectation_changed: false
+  candidate_outcomes_changed: false
+  status: accepted
+- correction_id: oracle-correction-003
+  case_id: A02
+  plan: metlife
+  artifact_path: expected.metlife
+  discovered_by: cold-brochure-rederivation
+  change: Replace the confident ordinary D2952 payment with MISSING_DOCUMENT at alternate-benefit review.
+  why: MetLife lists D2952 without the inlay table's explicit alternate annotation, but its general alternate-benefit and dental-review clauses do not exclude D2952; rule absence had hidden that unresolved applicability.
+  deciding_evidence:
+    kind: brochure
+    paths:
+    - data/documents/2026-metlife-fedvip-02AP-11.pdf
+    pages:
+    - 18
+    - 33
+    - 34
+    statement: A clinical policy is required to decide whether review applies and, if it does, which less-costly service and reconciliation operands control.
+  monetary_expectation_changed: true
+  previous_modeled_plan_pays_cents: 42000
+  corrected_result_kind: INCOMPLETE
+  candidate_outcomes_changed: false
+  status: accepted
+- correction_id: oracle-correction-002
+  case_id: all
+  plan: both
+  artifact_path: plan_inputs.*.accumulators.frequency_counts
+  discovered_by: accumulator-snapshot-invariant-test
+  change: Seed every reviewed frequency pool explicitly at zero in each frozen input snapshot.
+  why: The original snapshots omitted zero-valued frequency pools but expected claim deltas to name them, which would create accumulator identifiers during commit.
+  deciding_evidence:
+    kind: architecture
+    path: 02-ARCHITECTURE.md
+    section: 6 Claim, pricing, and history inputs; 7.3 Effects and abstentions
+    statement: Snapshots include applicable resolved and candidate pools, and delta application cannot create an absent identifier.
+  monetary_expectation_changed: false
+  candidate_outcomes_changed: false
+  status: accepted
