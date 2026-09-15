@@ -31,6 +31,17 @@ cases:
   - canonical_order
   - headline_divergence
   thesis: The same ordered treatment plan hits the two combined annual maxima at different points.
+  scenario_assumptions:
+  - assumption_id: b01-distinct-teeth-v1
+    statement: 'The D2740 crowns are for different teeth: tooth 3 and tooth 14.'
+  - assumption_id: b01-clear-crown-history-v1
+    statement: Neither tooth has a prior crown inside either plan's applicable replacement or frequency window.
+  - assumption_id: b01-clinical-gate-passed-v1
+    statement: Both crowns have passed the carrier's dental or clinical review, are covered as submitted, and no alternate benefit applies.
+  - assumption_id: arbiter-benchmark-schedule-v1
+    statement: Each crown uses the same frozen synthetic $1,000 benchmark allowance; this is not a carrier fee schedule.
+  - assumption_id: b01-prior-maximum-v1
+    statement: The member has already used $1,100 of the applicable combined annual maximum before this claim.
   claim:
     claim_id: claim-b01
     member_id: member-001
@@ -45,7 +56,7 @@ cases:
       date_of_service: '2026-06-15'
       network_state: in_network
       submitted_cents: 100000
-      tooth: null
+      tooth: '3'
       quadrant: null
       arch: null
     - line_id: L2
@@ -55,7 +66,7 @@ cases:
       date_of_service: '2026-06-15'
       network_state: in_network
       submitted_cents: 100000
-      tooth: null
+      tooth: '14'
       quadrant: null
       arch: null
   history_input: []
@@ -495,6 +506,7 @@ cases:
   - a
   - in_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o01
     member_id: member-001
@@ -786,6 +798,7 @@ cases:
   - a
   - out_of_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o02
     member_id: member-001
@@ -1079,6 +1092,7 @@ cases:
   - b
   - in_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o03
     member_id: member-001
@@ -1370,6 +1384,7 @@ cases:
   - b
   - out_of_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o04
     member_id: member-001
@@ -1666,6 +1681,7 @@ cases:
   - c
   - in_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o05
     member_id: member-001
@@ -1957,6 +1973,7 @@ cases:
   - c
   - out_of_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o06
     member_id: member-001
@@ -2253,6 +2270,7 @@ cases:
   - a
   - in_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o07
     member_id: member-001
@@ -2594,6 +2612,7 @@ cases:
   - a
   - in_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o08
     member_id: member-001
@@ -2935,6 +2954,7 @@ cases:
   - a
   - in_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o09
     member_id: member-001
@@ -3276,6 +3296,7 @@ cases:
   - a
   - in_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o10
     member_id: member-001
@@ -3602,6 +3623,7 @@ cases:
   - a
   - in_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o11
     member_id: member-001
@@ -3928,6 +3950,7 @@ cases:
   - c
   - in_network
   thesis: Control case for the standard rule path.
+  scenario_assumptions: []
   claim:
     claim_id: claim-o12
     member_id: member-001
@@ -4218,6 +4241,7 @@ cases:
   - annual_maximum
   - exact_boundary
   thesis: Exact remaining-maximum arithmetic must cap, not deny or overpay.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b02
     member_id: member-001
@@ -4509,6 +4533,7 @@ cases:
   - annual_maximum
   - exhausted
   thesis: An exhausted accumulator is a modeled zero, not an abstention.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b03
     member_id: member-001
@@ -4786,6 +4811,7 @@ cases:
   - deductible
   - partial
   thesis: The deductible remainder, not the full deductible, is consumed.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b04
     member_id: member-001
@@ -5082,6 +5108,7 @@ cases:
   - deductible
   - exact_boundary
   thesis: The deductible remainder, not the full deductible, is consumed.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b05
     member_id: member-001
@@ -5361,6 +5388,7 @@ cases:
   - candidate_worlds
   - exact_count
   thesis: Ambiguity must not poison a line whose candidate outcomes agree.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b06
     member_id: member-001
@@ -5710,6 +5738,7 @@ cases:
   - ambiguous_language
   - adjudication_boundary
   thesis: Only the first money-distinguishing claim should expose Delta's ambiguity.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b07
     member_id: member-001
@@ -5971,6 +6000,7 @@ cases:
   - calendar_vs_rolling
   - cross_plan_divergence
   thesis: The same history has different relevance under calendar-year and rolling limits.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b08
     member_id: member-001
@@ -6282,6 +6312,7 @@ cases:
   - combined_codes
   - 48_vs_60_months
   thesis: Combined D0210/D0330 pools differ by plan and window length.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b09
     member_id: member-001
@@ -6572,6 +6603,7 @@ cases:
   - combined_codes
   - 48_vs_60_months
   thesis: Combined D0210/D0330 pools differ by plan and window length.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b10
     member_id: member-001
@@ -6808,6 +6840,7 @@ cases:
   - eligibility
   - exact_date
   thesis: The effective start date is inclusive.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b11
     member_id: member-001
@@ -7099,6 +7132,7 @@ cases:
   - multi_line
   - deductible
   thesis: Input permutation must not change which line consumes the deductible.
+  scenario_assumptions: []
   claim:
     claim_id: claim-b12
     member_id: member-001
@@ -7569,6 +7603,7 @@ cases:
   - irrelevant_ambiguity
   - scope
   thesis: An unrelated ambiguous provision must not inflate the abstention rate.
+  scenario_assumptions: []
   claim:
     claim_id: claim-a01
     member_id: member-001
@@ -7862,6 +7897,7 @@ cases:
   - missing_document
   - clinical_policy
   thesis: Rule absence must not turn a broad, unresolved clinical-review clause into a confident ordinary payment.
+  scenario_assumptions: []
   claim:
     claim_id: claim-a02
     member_id: member-001
@@ -8117,6 +8153,7 @@ cases:
   - missing_document
   - clinical_policy
   thesis: Missing policy must not be mislabeled as brochure silence or guessed by the model.
+  scenario_assumptions: []
   claim:
     claim_id: claim-a03
     member_id: member-001
@@ -8357,6 +8394,7 @@ cases:
   - missing_document
   - claim_history
   thesis: An absent history source must not be interpreted as zero prior services.
+  scenario_assumptions: []
   claim:
     claim_id: claim-a04
     member_id: member-001
@@ -8550,6 +8588,7 @@ cases:
   - missing_document
   - fee_schedule
   thesis: A model must not invent a price merely because benefit percentages are known.
+  scenario_assumptions: []
   claim:
     claim_id: claim-a05
     member_id: member-001
@@ -8727,6 +8766,7 @@ cases:
   - candidate_pools
   - mixed_scope
   thesis: Superficially repeated deductible clauses must abstain only when cross-class state makes their relationship material.
+  scenario_assumptions: []
   claim:
     claim_id: claim-a06
     member_id: member-001

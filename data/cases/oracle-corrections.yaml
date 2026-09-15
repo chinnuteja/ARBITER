@@ -52,3 +52,22 @@ corrections:
   monetary_expectation_changed: false
   candidate_outcomes_changed: false
   status: accepted
+- correction_id: oracle-correction-004
+  case_id: B01
+  plan: both
+  artifact_path: claim.lines.*.tooth and scenario_assumptions
+  discovered_by: manual-brochure-reverification
+  change: Identify the two D2740 lines as teeth 3 and 14 and make the clear crown history, completed clinical review, unchanged alternate-benefit result, synthetic allowance, and prior annual-maximum balance explicit.
+  why: MetLife limits D2740 to one per tooth every 60 months, and both brochures reserve clinical or alternate-benefit review for crowns. Blank tooth fields and implicit post-review assumptions made the headline arithmetic under-specified.
+  deciding_evidence:
+    kind: brochure
+    paths:
+    - data/documents/2026-delta-fedvip-02AP-05.pdf
+    - data/documents/2026-metlife-fedvip-02AP-11.pdf
+    pages:
+    - Delta 14, 16, 27-29
+    - MetLife 18, 22-23, 34
+    statement: The $400/$700 arithmetic holds for two clinically approved crowns on distinct eligible teeth using the declared benchmark and accumulator inputs; the public brochures do not supply those case facts or the $1,000 allowance.
+  monetary_expectation_changed: false
+  candidate_outcomes_changed: false
+  status: accepted

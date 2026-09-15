@@ -16,6 +16,8 @@ def test_demo_lead_case_runs_through_both_reviewed_specs() -> None:
     assert payload["case"]["case_id"] == "B01"
     assert payload["outcomes"]["delta"]["result_kind"] == "COMPLETE"
     assert payload["outcomes"]["metlife"]["result_kind"] == "COMPLETE"
+    assert [line["tooth"] for line in payload["case"]["claim"]["lines"]] == ["3", "14"]
+    assert len(payload["case"]["scenario_assumptions"]) == 5
     assert [line["plan_pays_cents"] for line in payload["outcomes"]["delta"]["lines"]] == [
         35000,
         5000,

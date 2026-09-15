@@ -132,12 +132,21 @@ def case_payload(data: DemoData, case_id: str) -> dict[str, Any]:
         }
     return {
         "mvp_notice": (
-            "MODELED outcome using a frozen synthetic benchmark allowance. "
-            "This is not a carrier payment guarantee."
+            "MODELED payment after the stated coverage and clinical-review gates, "
+            "using a frozen synthetic benchmark allowance. This is not a carrier "
+            "payment guarantee."
         ),
         "case": {
             key: case[key]
-            for key in ("case_id", "category", "title", "tags", "thesis", "claim")
+            for key in (
+                "case_id",
+                "category",
+                "title",
+                "tags",
+                "thesis",
+                "scenario_assumptions",
+                "claim",
+            )
         },
         "plans": plan_meta,
         "outcomes": outcomes,

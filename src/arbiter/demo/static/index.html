@@ -45,10 +45,10 @@
           </div>
 
           <aside class="decision-preview" aria-label="Opening claim result">
-            <div class="preview-topline"><span>LEAD CASE · B01</span><span class="live-chip"><i></i> VERIFIED RUN</span></div>
+            <div class="preview-topline"><span>LEAD CASE · B01</span><span class="live-chip"><i></i> MODELED CASE</span></div>
             <div class="preview-claim">
               <span class="tooth-code">D2740</span>
-              <div><strong>Two porcelain crowns</strong><small>Same member · same date · same network</small></div>
+              <div><strong>Two approved porcelain crowns</strong><small>Different teeth · same date · in-network</small></div>
             </div>
             <div class="preview-results">
               <div><span>Delta Standard</span><strong id="hero-delta-pay">$400</strong><small>plan pays</small></div>
@@ -79,7 +79,8 @@
 
       <section class="section wrap claim-section" id="claim" aria-labelledby="claim-heading">
         <div class="section-heading compact-heading"><div><p class="eyebrow">SUBMITTED INPUT</p><h2 id="claim-heading">The claim did not change.</h2></div><p id="claim-id" class="microcopy"></p></div>
-        <div class="table-shell"><table><thead><tr><th>Order</th><th>Procedure</th><th>Class</th><th>Network</th><th>Service date</th><th>Submitted</th></tr></thead><tbody id="claim-lines"></tbody></table></div>
+        <div class="table-shell"><table><thead><tr><th>Order</th><th>Procedure</th><th>Tooth</th><th>Class</th><th>Network</th><th>Service date</th><th>Submitted</th></tr></thead><tbody id="claim-lines"></tbody></table></div>
+        <div id="case-assumptions" class="assumption-panel" aria-live="polite"></div>
       </section>
 
       <section class="section trace-section" id="trace" aria-labelledby="trace-heading">
@@ -138,7 +139,7 @@
         <a href="#trace" data-overview-destination="trace"><strong>Trace <span>→</span></strong><small>Follow the calculation to the source clauses.</small></a>
         <a href="#benchmark" data-overview-destination="benchmark"><strong>AI audit <span>→</span></strong><small>Inspect extraction errors against reviewed rules.</small></a>
       </nav>
-      <p class="overview-scope">Working prototype · two reviewed plans · synthetic claims and allowances. PDF extraction is evaluated separately.</p>
+      <p class="overview-scope">Working prototype · two reviewed plans · synthetic claims and allowances. B01 assumes clinical approval and two different eligible teeth. PDF extraction is evaluated separately.</p>
       <div class="overview-sources"><span>2026 OPM BROCHURES · STANDARD OPTIONS REVIEWED</span><div class="source-links" data-source-links></div></div>
       <button type="button" id="overview-start" class="button primary">Open the $300 comparison <span aria-hidden="true">→</span></button>
     </dialog>

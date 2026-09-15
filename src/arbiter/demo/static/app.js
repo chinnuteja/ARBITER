@@ -72,16 +72,21 @@ function showToast(message) {
   showToast.timer = window.setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
-function renderClaim(claim) {
+function renderClaim(caseData) {
+  const claim = caseData.claim;
   $('#claim-id').textContent = `${claim.claim_id} · ${title(claim.coverage_tier)}`;
   $('#claim-lines').innerHTML = claim.lines.map((line) => `<tr>
     <td><span class="order-index">${line.source_sequence}</span></td>
     <td><strong class="procedure-code">${escapeHtml(line.submitted_code)}</strong><small>Submitted procedure</small></td>
+    <td>${line.tooth ? `<span class="tooth-value">#${escapeHtml(line.tooth)}</span>` : '—'}</td>
     <td><span class="class-chip">Class ${escapeHtml(line.service_class)}</span></td>
     <td><span class="network-chip">${title(line.network_state)}</span></td>
     <td>${escapeHtml(line.date_of_service)}</td>
     <td class="amount">${money(line.submitted_cents)}</td>
   </tr>`).join('');
+  const assumptions = caseData.scenario_assumptions || [];
+  $('#case-assumptions').innerHTML = assumptions.length ? `<div><span class="assumption-mark">i</span><div><strong>Conditions for this modeled result</strong><p>These inputs are explicit—not facts invented from the brochures.</p></div></div><ul>${assumptions.map((item) => `<li>${escapeHtml(item.statement)}</li>`).join('')}</ul>` : '';
+  $('#case-assumptions').hidden = assumptions.length === 0;
 }
 
 function planLineSummary(line) {
@@ -279,7 +284,7 @@ async function loadCase(caseId) {
     state.payload = payload;
     state.activePlan = 'delta';
     renderMeta(payload.case);
-    renderClaim(payload.case.claim);
+    renderClaim(payload.case);
     renderPlanCards(payload);
     renderTrace();
     renderEvidence();
